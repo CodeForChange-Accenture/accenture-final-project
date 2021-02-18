@@ -8,6 +8,7 @@ background:#8C52E5;
         overflow-x:hidden;
         top: 0;
         left: 0;
+        z-index: 1;
         background: #63dc3f;
         height: 100vh;
         width: 10em;
@@ -31,7 +32,7 @@ background:#8C52E5;
             }
         }
     }
-    .main{        
+    .main{
         background:#8C52E5;
         position: absolute;
         top: 0px;
@@ -44,25 +45,66 @@ background:#8C52E5;
                 color:white;
             }
         }
-        .main-board{
-            background:#8C52E5;
-            margin: 0;
+    .main-board{
+        background:#8C52E5;
+        margin: 0;
+        display: block;
+        label{
+            color:#9B9B9B;
+        }
+        .balance-infos{
             display: flex;
+            justify-content:space-between;
+            min-height: 250px;
             flex-wrap:wrap;
-            .balance-infos{                
-                border-radius: 10px;
-                display: flex;
-                flex-wrap:wrap;
-                min-height: 200px;
-                background: white;
-            }
-            .last-sent{
-                padding:50px;
-                border-radius: 10px;     
-                background: white;   
-                min-height: 400px;
-                width: 100%;
+            border-radius: 10px;
+            margin-left: 140px;
+                .account, .credit{
+                    display:flex;
+                    text-align:left;
+                    flex-direction:column;
+                    justify-content:center;
+                    padding:50px;
+                    border-radius: 10px;
+                    background: white;
+                    margin: 8px;
+                    width: 48%;
+                    .account-balance, .credit-balance{
+                        display: block;
+                        margin: 40px 0;
+                    }
+                    .account-balance{
+                        h2:nth-child(5){
+                            color:#68DE5A;
+                        }
+                    }
+                    .credit-balance{
+                        h2:nth-child(2){
+                            color:#1783E7;
+                        }
+                        h2:nth-child(5){
+                            color:#68DE5A;
+                        }
+                    }
+                }
             }
         }
+        .last-sent{
+            overflow:auto;
+            padding:50px;
+            border-radius: 10px;
+            background: white;
+            min-height: 400px;
+            margin-top: -10px;            
+            div{
+                margin: 10px 0;
+            }
+            .historic{
+                margin-top: 40px;
+                display: flex;
+                justify-content:space-between;
+            }
+        }
+        
     }
 ` 
