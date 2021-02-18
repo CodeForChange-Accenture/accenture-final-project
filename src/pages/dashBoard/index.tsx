@@ -5,7 +5,7 @@ import {DashBoardPage} from "./style"
 const DashBoard: React.FC = () => {
   return (
     <DashBoardPage>
-        <img src="logoHandGama" alt=""/>
+        <img src={logoHandGama} alt="Green logo Gama"/>
     </DashBoardPage>
   );
 }
