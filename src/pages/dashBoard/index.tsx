@@ -32,9 +32,9 @@ const DashBoard: React.FC = () => {
           Transações
           </p>
         </div>
-        <div className="main-board">
+      </div>
+      <div className="main-board">
 
-        </div>
       </div>
     </DashBoardPage>
   );
