@@ -34,7 +34,7 @@ const DashBoard: React.FC = () => {
         </div>
       </div>
       <div className="main-board">
-
+        <p>teste</p>
       </div>
     </DashBoardPage>
   );

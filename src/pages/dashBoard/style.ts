@@ -6,6 +6,10 @@ background:#8C52E5;
         background: #63dc3f;
         height: 100vh;
         width: 10em;
+        position: fixed;
+        top: 0;
+        left: 0;
+        color: white;
         img{
             margin: 15px;
         }
