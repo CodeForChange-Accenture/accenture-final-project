@@ -33,8 +33,23 @@ const DashBoard: React.FC = () => {
           </p>
         </div>
       </div>
-      <div className="main-board">
-        <p>teste</p>
+      <div className="main">
+        <div className="main-message">
+          <p>Olá <b>Usuário</b>, seja bem vindo!</p>
+        </div>
+        <div className="main-board">
+          <div className="balance-infos">
+            <div className="account">
+              <span>Conta</span>
+            </div>
+            <div className="credit">
+              <span>Conta crédito</span>
+            </div>
+          </div>
+          <div className="last-sent">
+            <span>Ultimos lançamentos</span>
+          </div>
+        </div>
       </div>
     </DashBoardPage>
   );
