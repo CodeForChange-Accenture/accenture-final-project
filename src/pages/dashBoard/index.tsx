@@ -1,12 +1,13 @@
 import React from 'react';
 import logoHandGama from "../../img/logoHandGama.png"
-import {DashBoardPage} from "./style"
-import {FiCommand, FiDollarSign, FiCreditCard} from 'react-icons/fi';
+import { DashBoardPage , SideBar, Main } from "./style"
+import { FiCommand , FiDollarSign, FiCreditCard,FiEye, FiEyeOff } from 'react-icons/fi';
 
 const DashBoard: React.FC = () => {
   return (
+    <>
     <DashBoardPage>
-      <div className="side-bar">
+      <SideBar>
         <img src={logoHandGama} alt="Green logo Gama"/>
         <div>          
           <FiCommand size={30}/>
@@ -32,10 +33,15 @@ const DashBoard: React.FC = () => {
           Transações
           </p>
         </div>
-      </div>
-      <div className="main">
+      </SideBar>
+      <Main>
         <div className="main-message">
-          <p>Olá <b>Usuário</b>, seja bem vindo!</p>
+          <div>
+            <p>Olá <b>Usuário</b>, seja bem vindo!</p>
+          </div>
+          <div>
+            <FiEye size={35}/>
+          </div>
         </div>
         <div className="main-board">
           <div className="balance-infos">
@@ -76,8 +82,9 @@ const DashBoard: React.FC = () => {
             {/*  */}
           </div>
         </div>
-      </div>
+      </Main>
     </DashBoardPage>
+    </>
   );
 }
 
