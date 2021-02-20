@@ -81,7 +81,7 @@ background:#8C52E5;
             }
         }
     }
-` 
+`
 
 export const SideBar = styled.div`
         position: fixed;

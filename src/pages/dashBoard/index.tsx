@@ -1,6 +1,6 @@
 import React from 'react';
 import logoHandGama from "../../img/logoHandGama.png"
-import { DashBoardPage , SideBar, Main } from "./style"
+import { DashBoardPage , SideBar, Main } from  "./style"
 import { FiCommand , FiDollarSign, FiCreditCard,FiEye, FiEyeOff } from 'react-icons/fi';
 
 const DashBoard: React.FC = () => {
