@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Switch, Route } from "react-router-dom";
-import Dashboard from "../pages/dashboard";
+import Dashboard from "../pages/dashBoard";
 import RecoveryPass from "../pages/recoveryPass/index";
 import Error from "../pages/error/index";
 
