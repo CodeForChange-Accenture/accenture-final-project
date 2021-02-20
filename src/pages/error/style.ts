@@ -20,7 +20,7 @@ form{
     text-decoration:none;
 
     svg#Triangle{
-        margin:0% 50%; 
+        width: 100%;
     }
 
     a{
