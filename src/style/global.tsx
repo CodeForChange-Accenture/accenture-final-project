@@ -11,4 +11,8 @@ export default createGlobalStyle`
 #root{
     height: 100%;
 }
+
+img{
+    max-width: 100%;
+}
 `

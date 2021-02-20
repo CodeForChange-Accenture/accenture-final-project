@@ -2,12 +2,15 @@ import styled, {css} from "styled-components";
 import bgImage from "../../img/happy.png";
 
 export const HomePage = styled.div`
-background-color: #8C52E5;
-background-image: url(${bgImage});
-background-repeat: no-repeat;
-background-position: bottom;
-min-height:100vh;
-    img{
+    .home {
+        background-color: #8C52E5;
+        background-image: url(${bgImage});
+        background-repeat: no-repeat;
+        background-position: bottom;
+        min-height:100vh;
+    }
+
+    .logo-gama{
         margin: 40px;
     }
     .middle-div{
