@@ -1,5 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import logoHandGama from "../../img/logoHandGama.png";
+import { toast } from "react-toastify";
+import jwt_decode from "jwt-decode";
+
+import { useDispatch, useSelector } from "react-redux";
+
+import { IUser } from "../../store/modules/user/types";
+
 import { DashBoardPage, SideBar, Main } from "./style";
 import {
   FiCommand,
@@ -8,8 +15,53 @@ import {
   FiEye,
   FiEyeOff,
 } from "react-icons/fi";
+import api from "../../services/api";
+
+import { useHistory } from "react-router-dom";
+import AccountAct from "../../store/modules/user/reducer";
 
 const DashBoard: React.FC = () => {
+  const history = useHistory();
+
+  const dispatch = useDispatch();
+  const selector = useSelector((state) => state);
+
+  const TokenStorage = null || localStorage.getItem("@tokenApp");
+
+  const TokenDecodedValue = () => {
+    if (TokenStorage) {
+      const TokenArr = TokenStorage.split(" ");
+      const TokenDecode = TokenArr[1];
+      const decoded = jwt_decode<IUser>(TokenDecode);
+      return decoded.sub;
+    } else {
+      alert("err");
+    }
+  };
+
+  const login = TokenDecodedValue();
+
+  useEffect(() => {
+    api
+      .get(`dashboard?fim=2021-02-18&inicio=2021-02-18&login=${login}`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: localStorage.getItem("@tokenApp"),
+        },
+      })
+      .then((response) => {
+        dispatch({
+          type: "ADD_ACCOUNT_INFO",
+          payload: { asd: response.data },
+        });
+        console.log(response.data);
+      })
+      .catch((e) => {
+        localStorage.clear();
+        toast.error("Ops, sua sessão está inspirada.");
+        history.push("/login");
+      });
+  }, []);
   return (
     <>
       <DashBoardPage>
