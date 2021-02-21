@@ -6,6 +6,12 @@ export const Container = styled.div`
     min-height: 100vh;
 `
 
+export const Header = styled.div`
+    img{
+        margin: 40px;
+    }
+`
+
 export const FormLogin = styled.div`
 background-color: #8C52E5;
 background-repeat: no-repeat;
@@ -14,7 +20,7 @@ min-height:100vh;
     img{
         margin: 40px;
     }
-form{
+    form{
     background: #FBFBFB;
     border-radius: 8px;
     padding: 24px 40px 40px 40px;
