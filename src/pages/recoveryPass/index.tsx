@@ -11,9 +11,10 @@ import api from "../../services/api";
 
 const RecoveryPass: React.FC = () => {
 
-  const history = useHistory(); 
+ const history = useHistory(); 
 
-  const [ cpf, setCpf ] = useState('');
+  
+  const [ user, setUser ] = useState('');
   const [ password,setPassword ] = useState('');
   const [ confirmPass, setConfirmPass ] = useState('');
 
@@ -21,17 +22,27 @@ const RecoveryPass: React.FC = () => {
     event.preventDefault();
 
     const postData = {
-      cpf: cpf,
-      senha: password,
-      ConfirmaSenha: confirmPass
-    
+      login: user,
+      email: "matheus@matheus.com"
+  }
+
+  const postData1 ={
+    usuario: user,
+    senha: password
   }
   if(password != confirmPass){
     toast.error('As senhas não são compativeis');
     return ;
-  } else{
-    toast.success('A Nova senha foi definida');
   }
+
+  api.post(`nova-senha`, postData ).then(
+    response => {
+      console.log(response.data);
+      api.post('altera-senha',postData1, {params:{senhaTemporaria: response.data}}).then( () =>
+        toast.success('A Nova senha foi definida')
+      )
+    }
+  )
 }
   return (
     <RecoveryStyle>
@@ -51,7 +62,7 @@ const RecoveryPass: React.FC = () => {
           <p id="subtitle-recovery">
             Confirme seu CPF e escolha sua nova senha.
           </p>
-            <input type="text" value={cpf} onChange={e => setCpf(e.target.value)} placeholder="Confirme seu CPF"/>
+            <input type="text" value={user} onChange={e => setUser(e.target.value)} placeholder="Confirme seu Usuario"/>
             <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Digite sua nova senha"/>
             <input type="password" value={confirmPass} onChange={e => setConfirmPass(e.target.value)} placeholder="Confirme sua nova senha"/>
             <button type="submit">Enviar<FiArrowRight size={20}/></button>
