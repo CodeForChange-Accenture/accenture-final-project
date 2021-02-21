@@ -10,6 +10,7 @@ export const Container = styled.div`
   section {
     display: flex;
     flex-direction: column;
+    flex-basis: 50%;
     width: 100%;
     padding-top: 80px;
     padding-bottom: 70px;
@@ -44,7 +45,7 @@ export const Container = styled.div`
 
   .sectionRight{
     background: #F8F8F8;
-    padding-left: 100px;
+    padding-left: 7%;
     display: flex;
 
     h2{

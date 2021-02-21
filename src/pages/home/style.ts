@@ -11,7 +11,9 @@ export const HomePage = styled.div`
     }
 
     .logo-gama{
-        margin: 40px;
+        padding-top: 40px;
+        padding-left: 40px;
+        margin-bottom: 20px;
     }
     .middle-div{
         display: flex;
@@ -35,10 +37,20 @@ export const HomePage = styled.div`
                 text-align: left;
                 transition: 0.5s;
                 color: #8C52E5;
+                border: 2px solid #fff; 
                 font-size: 20px;
                 font-weight: 300;
+                display:flex;
+                justify-content: space-between;
+                align-items:center;
+
+                transition: .4 ease-in;
+                transition-property: background-color, color, border-color;
+
                 &:hover{
-                    background: #68DE5A;
+                    background-color: transparent;
+                    color: #fff;
+                    border-color: #fff;
                 }
             }
         }
@@ -46,28 +58,31 @@ export const HomePage = styled.div`
             background: white;
             border-radius: 15px;
             padding: 20px;
+            padding-top: 24px;
             flex: 0;
             
             div{
-                margin: 20px;
+                padding: 0 20px;
             }
             form{
+                padding: 20px;
+
                 input{
                     display:block;
                     border: none;
-                    font-size: 16px;
-                    padding: 8px;
-                    font-weight: 300;
+                    font-size: 14px;
+                    line-height: 14px;
+                    padding-bottom: 8px;
+                    font-weight: 500;
                     text-align:left;
-                    width: 90%;
-                    margin: 25px;
-                    border-bottom: 2px solid #666;
+                    width: 100%;
+                    margin-bottom: 25px;
+                    border-bottom: 1px solid #666;
                 }
             }
             
             h4{
                 font-size: 25px;
-                margin-bottom:20px;
             }
 
             button{
@@ -78,15 +93,21 @@ export const HomePage = styled.div`
                 width: 325px;
                 text-align: left;
                 transition: 0.5s;
-                color: #8C52E5;
-                font-size: 20px;
+                color: #fff;
+                font-size: 14px;
                 font-weight: 300;
-                border: 3px solid #8C52E5;
-                margin: 20px 0;
-                &:hover{
-                    background: #68DE5A;
+                margin-top: 20px;
+                display:flex;
+                justify-content: space-between;
+                align-items:center;
+                background: #68DE5A;
+                outline: none;
+                transition: 0.5s;
+                :hover{
+                    transition: 0.5s;
+                    background: #4ea543;
                 }
-            }
+
         }
     }
 `

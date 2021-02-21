@@ -3,6 +3,8 @@ import { Link, useHistory } from "react-router-dom";
 import { HomePage } from "./style";
 import Logo from "../../img/logo.png";
 
+import { FiArrowRight } from 'react-icons/fi';
+
 import api from "../../services/api";
 import SectionB from './sectionB';
 import SectionC from './sectionC';
@@ -59,7 +61,9 @@ const Home: React.FC = () => {
             <h2>Gama Bank é um projeto de nossos alunos.</h2>
             <h2>Já tem conta?</h2>
             <Link to="/login">
-              <button>Acessar</button>
+              <button>
+                Acessar <FiArrowRight size={20} />
+              </button>
             </Link>
           </div>
           <div className="signup-div">
@@ -74,7 +78,9 @@ const Home: React.FC = () => {
               <input type="text" value={userName} onChange={e => setUserName(e.target.value)} placeholder="Nome do usuário"/>
               <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Digite sua senha"/>
               <input type="password" value={confirmPass} onChange={e => setConfirmPass(e.target.value)} placeholder="Confirme sua senha"/>
-              <button type="submit">Continuar</button>
+              <button type="submit">
+                Continuar <FiArrowRight size={20}/>
+              </button>
             </form>
           </div>
         </div>
