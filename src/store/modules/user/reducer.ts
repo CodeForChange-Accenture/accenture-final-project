@@ -1,25 +1,27 @@
 import { Reducer } from "redux";
 
-import { IDataAccount } from "./types";
+import { IBank, IDataAccount } from "./types";
 
-const INITIAL_STATE: IDataAccount = {
-    contaBanco:{
-        saldo: 10,
-        id: 0,
-        lancamentos: ""
-    },
-    contaCredito:{
-        saldo: 5,
-        id: 0,
-        lancamentos: ""
-    },
+const INITIAL_STATE: IBank = {
+    banco:{
+        contaBanco:{
+            saldo: 0,
+            id: 0,
+            lancamentos: ""
+        },
+        contaCredito:{
+            saldo: 0,
+            id: 0,
+            lancamentos: ""
+        }
+    }
 }
 
-const AccountAct: Reducer<IDataAccount> = (state = INITIAL_STATE, action) => {
+const AccountAct: Reducer<IBank | any> = (state = INITIAL_STATE, action) => {
     switch(action.type){
         case "ADD_ACCOUNT_INFO": {
-            console.log(action.payload);
-            return {...state,...action.payload}
+            const {banco} = action.payload            
+            return {...state.banco,banco}
         }
         default:{
             return state

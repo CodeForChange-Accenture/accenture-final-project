@@ -1,10 +1,10 @@
-import {IDataAccount} from "./types";
+import {IBank, IDataAccount} from "./types";
 
-export function AddAccountInfos(asd: IDataAccount){
+export function AddAccountInfos(banco: IBank){
     return{
         type: "ADD_ACCOUNT_INFO",
         payload:{
-            asd: {}
+            banco:{}
         }
     }
 }

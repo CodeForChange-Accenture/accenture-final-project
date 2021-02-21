@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import logoHandGama from "../../img/logoHandGama.png";
 import { toast } from "react-toastify";
 import jwt_decode from "jwt-decode";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { IUser } from "../../store/modules/user/types";
+import { IUser, IBank } from "../../store/modules/user/types";
 
 import { DashBoardPage, SideBar, Main } from "./style";
 import {
@@ -18,14 +18,17 @@ import {
 import api from "../../services/api";
 
 import { useHistory } from "react-router-dom";
-import AccountAct from "../../store/modules/user/reducer";
+
+import Deposit from "./deposit";
+import Transactions from "./transactions";
+import Payment from "./payments";
+import Plans from "./plans";
 
 const DashBoard: React.FC = () => {
   const history = useHistory();
-
+  const [bankAction, setBankAction] = useState("");
   const dispatch = useDispatch();
-  const selector = useSelector((state) => state);
-
+  const state = useSelector((state: IBank) => state);
   const TokenStorage = null || localStorage.getItem("@tokenApp");
 
   const TokenDecodedValue = () => {
@@ -52,9 +55,9 @@ const DashBoard: React.FC = () => {
       .then((response) => {
         dispatch({
           type: "ADD_ACCOUNT_INFO",
-          payload: { asd: response.data },
+          payload: { banco: response.data },
         });
-        console.log(response.data);
+        console.log(state);
       })
       .catch((e) => {
         localStorage.clear();
@@ -62,24 +65,25 @@ const DashBoard: React.FC = () => {
         history.push("/login");
       });
   }, []);
+
   return (
     <>
       <DashBoardPage>
         <SideBar>
           <img src={logoHandGama} alt="Green logo Gama" />
-          <div>
+          <div onClick={() => setBankAction("deposit")}>
             <FiCommand size={30} />
             <p>Depósitos</p>
           </div>
-          <div>
+          <div onClick={() => setBankAction("plan")}>
             <FiCommand size={30} />
             <p>Planos</p>
           </div>
-          <div>
+          <div onClick={() => setBankAction("payments")}>
             <FiCommand size={30} />
             <p>Pagamentos</p>
           </div>
-          <div>
+          <div onClick={() => setBankAction("transactions")}>
             <FiCommand size={30} />
             <p>Transações</p>
           </div>
@@ -88,7 +92,7 @@ const DashBoard: React.FC = () => {
           <div className="main-message">
             <div>
               <p>
-                Olá <b>Usuário</b>, seja bem vindo!
+                Olá <b>{login}</b>, seja bem vindo!
               </p>
             </div>
             <div>
@@ -96,6 +100,10 @@ const DashBoard: React.FC = () => {
             </div>
           </div>
           <div className="main-board">
+            {bankAction == "deposit" && <Deposit />}
+            {bankAction == "transactions" && <Transactions />}
+            {bankAction == "payments" && <Payment />}
+            {bankAction == "plan" && <Plans />}
             <div className="balance-infos">
               <div className="account">
                 <label>
@@ -104,7 +112,7 @@ const DashBoard: React.FC = () => {
                 </label>
                 <div className="account-balance">
                   <label>Saldo disponivel</label>
-                  <h2>R$: 10.000,00</h2>
+                  <h2>R$: {state.banco.contaBanco.saldo}</h2>
                   <br />
                   <label>Limite disponivel:</label>
                   <h2>R$: 2.120,21</h2>
@@ -116,7 +124,7 @@ const DashBoard: React.FC = () => {
                 </label>
                 <div className="credit-balance">
                   <label>Fatura atual</label>
-                  <h2>R$: 120,88</h2>
+                  <h2>R$: {state.banco.contaCredito.saldo}</h2>
                   <br />
                   <label>Limite disponivel:</label>
                   <h2>R$: 9.120,88</h2>

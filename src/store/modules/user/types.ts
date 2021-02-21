@@ -3,7 +3,7 @@ export interface IUser {
     idUsuario: number;
     sub: string;
   }
-  
+
 export interface IDataAccount {
     contaBanco: {
       saldo: number;
@@ -16,3 +16,8 @@ export interface IDataAccount {
       lancamentos: any;
     };
   }
+
+  
+export interface IBank {
+  banco: IDataAccount
+}
