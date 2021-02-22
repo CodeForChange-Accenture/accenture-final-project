@@ -34,8 +34,14 @@ const DashBoard: React.FC = () => {
   const history = useHistory();
   const [bankAction, setBankAction] = useState("");
   const [visible, setVisible] = useState(true);
+  const [inicio, setInicio] = useState("2021-01-01");
+  const [fim, setFim] = useState("2021-02-22");
+
   const dispatch = useDispatch();
   const state = useSelector((state: IBank) => state);
+  const historic = useSelector(
+    (state: IBank) => state.banco.contaBanco.lancamentos
+  );
   const TokenStorage = null || localStorage.getItem("@tokenApp");
 
   const TokenDecodedValue = () => {
@@ -53,7 +59,7 @@ const DashBoard: React.FC = () => {
 
   useEffect(() => {
     api
-      .get(`dashboard?fim=2021-02-18&inicio=2021-02-18&login=${login}`, {
+      .get(`dashboard?fim=${fim}&inicio=${inicio}&login=${login}`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: localStorage.getItem("@tokenApp"),
@@ -78,7 +84,7 @@ const DashBoard: React.FC = () => {
       .then((response) => {
         dispatch(LoadAccountPlans(response.data));
       });
-  }, []);
+  }, [inicio, fim]);
 
   return (
     <>
@@ -152,21 +158,41 @@ const DashBoard: React.FC = () => {
               </div>
             </div>
             <div className="last-sent">
-              <label>
-                <FiDollarSign size={30} />
-                Ultimos lançamentos
-              </label>
-              {/* Repeat when the api is consumed */}
-              <div className="historic">
-                <div className="historic-list">
-                  <h4>Compra no debito</h4>
-                  <label>GamaAcademy</label>
-                  <h2>R$: 298,55</h2>
+              <div className="date-ranges">
+                <label>
+                  <FiDollarSign size={30} />
+                </label>
+                <label>Ultimos lançamentos</label>
+                <div>
+                  <label>Inicio:</label>
+                  <input
+                    value={inicio}
+                    onChange={(e) => setInicio(e.target.value)}
+                    type="date"
+                  />
                 </div>
-                <div className="historic-day">
-                  <label>Dia 24 de Jan.</label>
+                <div>
+                  <label>Fim:</label>
+                  <input
+                    value={fim}
+                    onChange={(e) => setFim(e.target.value)}
+                    type="date"
+                  />
                 </div>
               </div>
+              {/* Repeat when the api is consumed */}
+              {state.banco.contaBanco.lancamentos.map((lancamentos, index) => (
+                <div key={index} className="historic">
+                  <div className="historic-list">
+                    <h4>{lancamentos.descricao}</h4>
+                    <label>GamaAcademy</label>
+                    <h2>{lancamentos.valor}</h2>
+                  </div>
+                  <div className="historic-day">
+                    <label>{lancamentos.data}</label>
+                  </div>
+                </div>
+              ))}
               {/*  */}
             </div>
           </div>

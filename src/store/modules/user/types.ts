@@ -3,16 +3,25 @@ export interface IUser {
     sub: string;
   }
 
+export interface IHistoric{
+  id: number,
+  data: string,
+  valor: number,
+  conta: number,
+  descricao: string,
+  tipo: string
+}
+
 export interface IDataAccount {
     contaBanco: {
       saldo: number;
       id: number;
-      lancamentos: any;
+      lancamentos: IHistoric[];
     };
     contaCredito: {
       saldo: number;
       id: number;
-      lancamentos: any;
+      lancamentos: IHistoric[];
     };
   }
 

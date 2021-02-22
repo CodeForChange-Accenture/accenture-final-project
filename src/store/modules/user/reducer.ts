@@ -7,12 +7,26 @@ const INITIAL_STATE: IBank = {
         contaBanco: {
             saldo: 0,
             id: 0,
-            lancamentos: []
+            lancamentos: [{
+                id: 0,
+                data: "",
+                valor: 0,
+                conta: 0,
+                descricao: "",
+                tipo: ""
+            }]
           },
           contaCredito: {
             saldo: 0,
             id: 0,
-            lancamentos: []
+            lancamentos: [{
+                id: 0,
+                data: "",
+                valor: 0,
+                conta: 0,
+                descricao: "",
+                tipo: ""
+            }]
           },
     },
     plan: [{
@@ -27,7 +41,9 @@ const INITIAL_STATE: IBank = {
 const AccountAct: Reducer = (state = INITIAL_STATE, action) => {
     switch(action.type){
         case "ADD_ACCOUNT_INFO": {
-            const {banco} = action.payload            
+            const {banco} = action.payload
+            console.log(action.payload);
+            
             return {...state,banco}
         }
         case "LOAD_ACCOUNT_PLANS":{

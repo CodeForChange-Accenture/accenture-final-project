@@ -131,4 +131,17 @@ export const Main = styled.div`
         .eye-visible{
             cursor:pointer;
         }
+        .date-ranges{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            input[type=date]{
+                margin-left: 10px;
+                border: none;
+                color: #333333;
+                font-size: 15px;
+                text-transform: uppercase;
+                font-style:italic;
+            }
+        }
 `
