@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import logoHandGama from "../../img/logoHandGama.png";
 import { toast } from "react-toastify";
 
@@ -39,9 +39,6 @@ const DashBoard: React.FC = () => {
 
   const dispatch = useDispatch();
   const state = useSelector((state: IBank) => state);
-  const historic = useSelector(
-    (state: IBank) => state.banco.contaBanco.lancamentos
-  );
   const TokenStorage = null || localStorage.getItem("@tokenApp");
 
   const TokenDecodedValue = () => {
@@ -120,7 +117,7 @@ const DashBoard: React.FC = () => {
             </div>
           </div>
           <div className="main-board">
-            {bankAction === "deposit" && <Deposit />}
+            {bankAction === "deposit" && <Deposit loginToken={login} />}
             {bankAction === "transactions" && <Transactions />}
             {bankAction === "payments" && <Payment />}
             {bankAction === "plan" && <Plans />}
@@ -159,10 +156,12 @@ const DashBoard: React.FC = () => {
             </div>
             <div className="last-sent">
               <div className="date-ranges">
-                <label>
-                  <FiDollarSign size={30} />
-                </label>
-                <label>Ultimos lançamentos</label>
+                <div className="title-historic">
+                  <label>
+                    <FiDollarSign size={30} />
+                  </label>
+                  <label>Ultimos lançamentos</label>
+                </div>
                 <div>
                   <label>Inicio:</label>
                   <input

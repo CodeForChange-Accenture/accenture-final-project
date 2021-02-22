@@ -8,4 +8,40 @@ padding: 40px;
     p{
     color:black !important;
     }
+    div{
+        margin:-10px 0;
+        form{
+                input{
+                    display:block;
+                    border: none;
+                    font-size: 20px;
+                    font-weight: 500;
+                    text-align:left;
+                    width: 90%;
+                    margin: 25px 0 30px 0;
+                    border-bottom: 2px solid #9B9B9B;
+                }
+                button{
+                    cursor: pointer;
+                    border: none;
+                    border-radius: 30px;
+                    padding: 5px 10px;
+                    width: 200px;
+                    text-align: left;
+                    transition: 0.5s;
+                    color: #8C52E5;
+                    font-size: 20px;
+                    font-weight: 300;
+                    border: 1px solid #8C52E5;
+                    &:hover{
+                        background: #68DE5A;
+                    }
+                }
+                input[type=date]{
+                color: #333333;
+                text-transform: uppercase;
+                font-style:italic;
+                }
+            }
+    }
 `

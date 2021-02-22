@@ -51,8 +51,10 @@ background:#8C52E5;
             padding:50px;
             border-radius: 10px;
             background: white;
-            min-height: 340px;
-            margin-top: -10px;            
+            height: 500px;
+            margin-top: -10px;
+            overflow:auto;
+            
             div{
                 margin: 10px 0;
             }
@@ -122,6 +124,7 @@ export const Main = styled.div`
         right: 0px;
         bottom: 0px;
         left: 10em;
+        overflow:auto;
         div{
             margin: 50px 150px;
             p{
@@ -133,8 +136,10 @@ export const Main = styled.div`
         }
         .date-ranges{
             display:flex;
-            justify-content:space-between;
+            justify-content:flex-end;
             align-items:center;
+            flex-wrap:wrap;
+            background:white;
             input[type=date]{
                 margin-left: 10px;
                 border: none;
@@ -142,6 +147,11 @@ export const Main = styled.div`
                 font-size: 15px;
                 text-transform: uppercase;
                 font-style:italic;
+            }   
+            .title-historic{
+                display:flex;
+                align-items:center;
+                margin-right: auto;
             }
         }
 `
