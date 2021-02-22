@@ -1,6 +1,6 @@
 import { Reducer } from "redux";
 
-import { IBank, IPlan } from "./types";
+import { IBank } from "./types";
 
 const INITIAL_STATE: IBank = {
     banco:{
@@ -30,17 +30,13 @@ const AccountAct: Reducer = (state = INITIAL_STATE, action) => {
             const {banco} = action.payload            
             return {...state,banco}
         }
-        break;
         case "LOAD_ACCOUNT_PLANS":{
             const {plan} = action.payload  
             return {...state,plan}
         }
-        break;
         default:{
             return state
         }
-        break;
-
     }
 }
 

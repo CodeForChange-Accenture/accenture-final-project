@@ -128,4 +128,7 @@ export const Main = styled.div`
                 color:white;
             }
         }
+        .eye-visible{
+            cursor:pointer;
+        }
 `

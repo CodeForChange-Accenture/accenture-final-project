@@ -1,4 +1,4 @@
-import styled, {css} from "styled-components";
+import styled from "styled-components";
 import Rect from "../../../img/Rectangle-8.png";
 
 export const Container = styled.div`

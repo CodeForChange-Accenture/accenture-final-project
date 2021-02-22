@@ -33,6 +33,7 @@ import { IUser } from "../../store/modules/user/types";
 const DashBoard: React.FC = () => {
   const history = useHistory();
   const [bankAction, setBankAction] = useState("");
+  const [visible, setVisible] = useState(true);
   const dispatch = useDispatch();
   const state = useSelector((state: IBank) => state);
   const TokenStorage = null || localStorage.getItem("@tokenApp");
@@ -108,15 +109,15 @@ const DashBoard: React.FC = () => {
                 Olá <b>{login}</b>, seja bem vindo!
               </p>
             </div>
-            <div>
-              <FiEye size={35} />
+            <div className="eye-visible" onClick={() => setVisible(!visible)}>
+              {visible ? <FiEye size={35} /> : <FiEyeOff size={35} />}
             </div>
           </div>
           <div className="main-board">
-            {bankAction == "deposit" && <Deposit />}
-            {bankAction == "transactions" && <Transactions />}
-            {bankAction == "payments" && <Payment />}
-            {bankAction == "plan" && <Plans />}
+            {bankAction === "deposit" && <Deposit />}
+            {bankAction === "transactions" && <Transactions />}
+            {bankAction === "payments" && <Payment />}
+            {bankAction === "plan" && <Plans />}
             <div className="balance-infos">
               <div className="account">
                 <label>
