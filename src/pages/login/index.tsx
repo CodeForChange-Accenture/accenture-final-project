@@ -1,14 +1,16 @@
-import React, { useState, FormEvent } from 'react';
+import React, { useState, FormEvent, useEffect } from 'react';
 import { Link, useHistory} from 'react-router-dom';
 
 import { FiArrowRight, FiChevronsRight } from 'react-icons/fi';
 
-import api from '../../services/api' 
+import api from '../../services/api'
 
 import Logo from "../../img/logo.png";
 import { Container, FormLogin, Header } from './styles';
 
-
+interface IToken{
+  storage: string
+}
 const Login: React.FC = () => {
 
   const history = useHistory();
@@ -16,10 +18,17 @@ const Login: React.FC = () => {
   const [login, setLogin] = useState('')
   const [password, setPassword] = useState('')
 
+  const [storage, setStorage] = useState<IToken>(():any =>{
+    let storageToken = () => localStorage.getItem('@tokenApp')
+    return storageToken();
+  })
+
+  useEffect(() => {
+    !!storage ? history.push('/dashboard'):localStorage.clear()
+  },[storage])
+
   function loginSys(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-
-    
     const postData = {
       usuario: login,
       senha: password
