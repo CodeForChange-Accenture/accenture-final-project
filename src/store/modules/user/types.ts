@@ -25,6 +25,6 @@ export interface IPlan{
 }
   
 export interface IBank {
-  plan: IPlan
+  plan: IPlan[]
   banco: IDataAccount
 }

@@ -15,25 +15,25 @@ const INITIAL_STATE: IBank = {
             lancamentos: []
           },
     },
-    plan: {
+    plan: [{
         id: 0,
         descricao: "",
         login: "",
         tipoMovimento: "",
         padrao: true
-      }
+    }]
 }
 
 const AccountAct: Reducer = (state = INITIAL_STATE, action) => {
     switch(action.type){
         case "ADD_ACCOUNT_INFO": {
             const {banco} = action.payload            
-            return {...state.banco,banco}
+            return {...state,banco}
         }
         break;
         case "LOAD_ACCOUNT_PLANS":{
             const {plan} = action.payload  
-            return {...state.plan,plan}
+            return {...state,plan}
         }
         break;
         default:{

@@ -5,6 +5,10 @@ import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 
 import { IBank } from "../../store/modules/user/types";
+import {
+  AddAccountInfos,
+  LoadAccountPlans,
+} from "../../store/modules/user/action";
 
 import { DashBoardPage, SideBar, Main } from "./style";
 import {
@@ -55,15 +59,23 @@ const DashBoard: React.FC = () => {
         },
       })
       .then((response) => {
-        dispatch({
-          type: "ADD_ACCOUNT_INFO",
-          payload: { banco: response.data },
-        });
+        dispatch(AddAccountInfos(response.data));
       })
       .catch((e) => {
         localStorage.clear();
         toast.error("Ops, sua sessão está inspirada.");
         history.push("/login");
+      });
+
+    api
+      .get(`/lancamentos/planos-conta?login=${login}`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: localStorage.getItem("@tokenApp"),
+        },
+      })
+      .then((response) => {
+        dispatch(LoadAccountPlans(response.data));
       });
   }, []);
 
