@@ -1,11 +1,10 @@
 import React, { useCallback, useEffect, useState } from "react";
 import logoHandGama from "../../img/logoHandGama.png";
 import { toast } from "react-toastify";
-import jwt_decode from "jwt-decode";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { IUser, IBank } from "../../store/modules/user/types";
+import { IBank } from "../../store/modules/user/types";
 
 import { DashBoardPage, SideBar, Main } from "./style";
 import {
@@ -23,6 +22,9 @@ import Deposit from "./deposit";
 import Transactions from "./transactions";
 import Payment from "./payments";
 import Plans from "./plans";
+
+import jwt_decode from "jwt-decode";
+import { IUser } from "../../store/modules/user/types";
 
 const DashBoard: React.FC = () => {
   const history = useHistory();
@@ -57,7 +59,6 @@ const DashBoard: React.FC = () => {
           type: "ADD_ACCOUNT_INFO",
           payload: { banco: response.data },
         });
-        console.log(state);
       })
       .catch((e) => {
         localStorage.clear();

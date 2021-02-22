@@ -1,4 +1,3 @@
-
 export interface IUser {
     idUsuario: number;
     sub: string;
@@ -17,7 +16,15 @@ export interface IDataAccount {
     };
   }
 
+export interface IPlan{
+  id: number,
+  descricao: string,
+  login: string,
+  tipoMovimento: string,
+  padrao: boolean
+}
   
 export interface IBank {
+  plan: IPlan
   banco: IDataAccount
 }

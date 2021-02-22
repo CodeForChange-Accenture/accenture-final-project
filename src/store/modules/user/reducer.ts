@@ -1,31 +1,46 @@
 import { Reducer } from "redux";
 
-import { IBank, IDataAccount } from "./types";
+import { IBank, IPlan } from "./types";
 
 const INITIAL_STATE: IBank = {
     banco:{
-        contaBanco:{
+        contaBanco: {
             saldo: 0,
             id: 0,
-            lancamentos: ""
-        },
-        contaCredito:{
+            lancamentos: []
+          },
+          contaCredito: {
             saldo: 0,
             id: 0,
-            lancamentos: ""
-        }
-    }
+            lancamentos: []
+          },
+    },
+    plan: {
+        id: 0,
+        descricao: "",
+        login: "",
+        tipoMovimento: "",
+        padrao: true
+      }
 }
 
-const AccountAct: Reducer<IBank | any> = (state = INITIAL_STATE, action) => {
+const AccountAct: Reducer = (state = INITIAL_STATE, action) => {
     switch(action.type){
         case "ADD_ACCOUNT_INFO": {
             const {banco} = action.payload            
             return {...state.banco,banco}
         }
+        break;
+        case "LOAD_ACCOUNT_PLANS":{
+            const {plan} = action.payload  
+            return {...state.plan,plan}
+        }
+        break;
         default:{
             return state
         }
+        break;
+
     }
 }
 
