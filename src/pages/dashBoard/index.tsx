@@ -126,10 +126,12 @@ const DashBoard: React.FC = () => {
                 </label>
                 <div className="account-balance">
                   <label>Saldo disponivel</label>
-                  <h2>R$: {state.banco.contaBanco.saldo}</h2>
+                  <h2>
+                    {visible ? `R$: ${state.banco.contaBanco.saldo}` : `*****`}
+                  </h2>
                   <br />
                   <label>Limite disponivel:</label>
-                  <h2>R$: 2.120,21</h2>
+                  <h2>{visible ? `R$: 2.120,21` : `*****`}</h2>
                 </div>
               </div>
               <div className="credit">
@@ -138,10 +140,14 @@ const DashBoard: React.FC = () => {
                 </label>
                 <div className="credit-balance">
                   <label>Fatura atual</label>
-                  <h2>R$: {state.banco.contaCredito.saldo}</h2>
+                  <h2>
+                    {visible
+                      ? `R$: ${state.banco.contaCredito.saldo}`
+                      : `*****`}
+                  </h2>
                   <br />
                   <label>Limite disponivel:</label>
-                  <h2>R$: 9.120,88</h2>
+                  <h2>{visible ? `R$: 9.120,88` : `*****`}</h2>
                 </div>
               </div>
             </div>
