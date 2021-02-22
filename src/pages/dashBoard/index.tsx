@@ -1,5 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import logoHandGama from "../../img/logoHandGama.png";
+import { toast } from "react-toastify";
+
+import { useDispatch, useSelector } from "react-redux";
+
+import { IBank } from "../../store/modules/user/types";
+import {
+  AddAccountInfos,
+  LoadAccountPlans,
+} from "../../store/modules/user/action";
+
 import { DashBoardPage, SideBar, Main } from "./style";
 import {
   FiCommand,
@@ -8,26 +18,89 @@ import {
   FiEye,
   FiEyeOff,
 } from "react-icons/fi";
+import api from "../../services/api";
+
+import { useHistory } from "react-router-dom";
+
+import Deposit from "./deposit";
+import Transactions from "./transactions";
+import Payment from "./payments";
+import Plans from "./plans";
+
+import jwt_decode from "jwt-decode";
+import { IUser } from "../../store/modules/user/types";
 
 const DashBoard: React.FC = () => {
+  const history = useHistory();
+  const [bankAction, setBankAction] = useState("");
+  const [visible, setVisible] = useState(true);
+  const [inicio, setInicio] = useState("2021-01-01");
+  const [fim, setFim] = useState("2021-02-22");
+
+  const dispatch = useDispatch();
+  const state = useSelector((state: IBank) => state);
+  const TokenStorage = null || localStorage.getItem("@tokenApp");
+
+  const TokenDecodedValue = () => {
+    if (TokenStorage) {
+      const TokenArr = TokenStorage.split(" ");
+      const TokenDecode = TokenArr[1];
+      const decoded = jwt_decode<IUser>(TokenDecode);
+      return decoded.sub;
+    } else {
+      alert("err");
+    }
+  };
+
+  const login = TokenDecodedValue();
+
+  useEffect(() => {
+    api
+      .get(`dashboard?fim=${fim}&inicio=${inicio}&login=${login}`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: localStorage.getItem("@tokenApp"),
+        },
+      })
+      .then((response) => {
+        dispatch(AddAccountInfos(response.data));
+      })
+      .catch((e) => {
+        localStorage.clear();
+        toast.error("Ops, sua sessão está inspirada.");
+        history.push("/login");
+      });
+
+    api
+      .get(`/lancamentos/planos-conta?login=${login}`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: localStorage.getItem("@tokenApp"),
+        },
+      })
+      .then((response) => {
+        dispatch(LoadAccountPlans(response.data));
+      });
+  }, [inicio, fim]);
+
   return (
     <>
       <DashBoardPage>
         <SideBar>
           <img src={logoHandGama} alt="Green logo Gama" />
-          <div>
+          <div onClick={() => setBankAction("deposit")}>
             <FiCommand size={30} />
             <p>Depósitos</p>
           </div>
-          <div>
+          <div onClick={() => setBankAction("plan")}>
             <FiCommand size={30} />
             <p>Planos</p>
           </div>
-          <div>
+          <div onClick={() => setBankAction("payments")}>
             <FiCommand size={30} />
             <p>Pagamentos</p>
           </div>
-          <div>
+          <div onClick={() => setBankAction("transactions")}>
             <FiCommand size={30} />
             <p>Transações</p>
           </div>
@@ -36,14 +109,18 @@ const DashBoard: React.FC = () => {
           <div className="main-message">
             <div>
               <p>
-                Olá <b>Usuário</b>, seja bem vindo!
+                Olá <b>{login}</b>, seja bem vindo!
               </p>
             </div>
-            <div>
-              <FiEye size={35} />
+            <div className="eye-visible" onClick={() => setVisible(!visible)}>
+              {visible ? <FiEye size={35} /> : <FiEyeOff size={35} />}
             </div>
           </div>
           <div className="main-board">
+            {bankAction === "deposit" && <Deposit loginToken={login} />}
+            {bankAction === "transactions" && <Transactions />}
+            {bankAction === "payments" && <Payment />}
+            {bankAction === "plan" && <Plans />}
             <div className="balance-infos">
               <div className="account">
                 <label>
@@ -52,10 +129,12 @@ const DashBoard: React.FC = () => {
                 </label>
                 <div className="account-balance">
                   <label>Saldo disponivel</label>
-                  <h2>R$: 10.000,00</h2>
+                  <h2>
+                    {visible ? `R$: ${state.banco.contaBanco.saldo}` : `*****`}
+                  </h2>
                   <br />
                   <label>Limite disponivel:</label>
-                  <h2>R$: 2.120,21</h2>
+                  <h2>{visible ? `R$: 2.120,21` : `*****`}</h2>
                 </div>
               </div>
               <div className="credit">
@@ -64,29 +143,55 @@ const DashBoard: React.FC = () => {
                 </label>
                 <div className="credit-balance">
                   <label>Fatura atual</label>
-                  <h2>R$: 120,88</h2>
+                  <h2>
+                    {visible
+                      ? `R$: ${state.banco.contaCredito.saldo}`
+                      : `*****`}
+                  </h2>
                   <br />
                   <label>Limite disponivel:</label>
-                  <h2>R$: 9.120,88</h2>
+                  <h2>{visible ? `R$: 9.120,88` : `*****`}</h2>
                 </div>
               </div>
             </div>
             <div className="last-sent">
-              <label>
-                <FiDollarSign size={30} />
-                Ultimos lançamentos
-              </label>
-              {/* Repeat when the api is consumed */}
-              <div className="historic">
-                <div className="historic-list">
-                  <h4>Compra no debito</h4>
-                  <label>GamaAcademy</label>
-                  <h2>R$: 298,55</h2>
+              <div className="date-ranges">
+                <div className="title-historic">
+                  <label>
+                    <FiDollarSign size={30} />
+                  </label>
+                  <label>Ultimos lançamentos</label>
                 </div>
-                <div className="historic-day">
-                  <label>Dia 24 de Jan.</label>
+                <div>
+                  <label>Inicio:</label>
+                  <input
+                    value={inicio}
+                    onChange={(e) => setInicio(e.target.value)}
+                    type="date"
+                  />
+                </div>
+                <div>
+                  <label>Fim:</label>
+                  <input
+                    value={fim}
+                    onChange={(e) => setFim(e.target.value)}
+                    type="date"
+                  />
                 </div>
               </div>
+              {/* Repeat when the api is consumed */}
+              {state.banco.contaBanco.lancamentos.map((lancamentos, index) => (
+                <div key={index} className="historic">
+                  <div className="historic-list">
+                    <h4>{lancamentos.descricao}</h4>
+                    <label>GamaAcademy</label>
+                    <h2>{lancamentos.valor}</h2>
+                  </div>
+                  <div className="historic-day">
+                    <label>{lancamentos.data}</label>
+                  </div>
+                </div>
+              ))}
               {/*  */}
             </div>
           </div>
