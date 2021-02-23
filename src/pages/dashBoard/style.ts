@@ -64,8 +64,15 @@ background:#8C52E5;
                 justify-content:space-between;
             }
         }
+        .icon-center{
+            display: flex;
+            align-items: center;
+
+            svg{
+                margin-right: 8px;
+            }
+        }
         
-    }
     
     .main-message{
         display:flex;

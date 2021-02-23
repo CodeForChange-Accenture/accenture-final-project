@@ -143,22 +143,22 @@ const DashBoard: React.FC = () => {
             {bankAction === "plan" && <Plans />}
             <div className="balance-infos">
               <div className="account">
-                <label>
+                <label className="icon-center">
                   <FiDollarSign size={30} />
                   Conta
                 </label>
                 <div className="account-balance">
-                  <label>Saldo disponivel</label>
+                  <label>Saldo disponível</label>
                   <h2>
                     {visible ? `R$: ${formatMoney(state.banco.contaBanco.saldo)}` : `*****`}
                   </h2>
                   <br />
-                  <label>Limite disponivel:</label>
+                  <label>Limite disponível:</label>
                   <h2>{visible ? `R$: 2.120,21` : `*****`}</h2>
                 </div>
               </div>
               <div className="credit">
-                <label>
+                <label className="icon-center">
                   <FiCreditCard size={30} /> Conta crédito
                 </label>
                 <div className="credit-balance">
@@ -169,7 +169,7 @@ const DashBoard: React.FC = () => {
                       : `*****`}
                   </h2>
                   <br />
-                  <label>Limite disponivel:</label>
+                  <label>Limite disponível:</label>
                   <h2>{visible ? `R$: 9.120,88` : `*****`}</h2>
                 </div>
               </div>
@@ -177,13 +177,12 @@ const DashBoard: React.FC = () => {
             <div className="last-sent">
               <div className="date-ranges">
                 <div className="title-historic">
-                  <label>
-                    <FiDollarSign size={30} />
+                  <label className="icon-center">
+                    <FiDollarSign size={30} /> Últimos lançamentos
                   </label>
-                  <label>Ultimos lançamentos</label>
                 </div>
                 <div>
-                  <label>Inicio:</label>
+                  <label>Início:</label>
                   <input
                     value={inicio}
                     onChange={(e) => setInicio(e.target.value)}

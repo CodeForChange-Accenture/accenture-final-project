@@ -62,7 +62,7 @@ const Deposit: React.FC<IProps> = ({ loginToken }: IProps) => {
 
   return (
     <DashBoardDeposit>
-      <h3>Deposito</h3>
+      <h3>Depósito</h3>
       <div>
         <div>
           <form onSubmit={handlePlanoConta}>
@@ -85,7 +85,7 @@ const Deposit: React.FC<IProps> = ({ loginToken }: IProps) => {
               min="0"
             />
             <div>
-              <button type="submit">Confirmar deposito</button>
+              <button type="submit">Confirmar depósito</button>
             </div>
           </form>
         </div>
