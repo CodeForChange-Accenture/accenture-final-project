@@ -1,7 +1,8 @@
-import React, { useState, FormEvent } from "react";
+import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import InputMask from "react-input-mask";
 import { FiArrowRight } from "react-icons/fi";
+import { useForm } from "react-hook-form";
 
 import { HomePage } from "./style";
 import Logo from "../../img/logo.png";
@@ -12,33 +13,31 @@ import SectionC from "./sectionC";
 import SectionD from "./sectionD";
 import SectionE from "./sectionE";
 
+type Inputs = {
+  cpf: string,
+  name: string,
+  userName: string,
+  password: string,
+  confirmPassword: string,
+};
+
 const Home: React.FC = () => {
   const history = useHistory();
 
-  const [cpf, setCpf] = useState("");
-  const [name, setName] = useState("");
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPass, setConfirmPass] = useState("");
+  const { register, handleSubmit, errors, getValues } = useForm<Inputs>();
 
-  function createAccount(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-
+  function createAccount(data: Inputs) {
+    
     const postData = {
-      cpf,
-      nome: name,
-      login: userName,
-      senha: password,
-    };
-
-    if (password !== confirmPass) {
-      alert("Confirm pass");
-      return;
+      cpf: data.cpf.replace(/[^\d]/g, ""),
+      nome: data.name,
+      login: data.userName,
+      senha: data.password,
     }
 
     try {
       api.post(`usuarios`, postData).then((response) => {
-        if (response.status == 200) {
+        if (response.status === 200) {
           history.push("/login");
         } else {
           alert("Erro no cadastro");
@@ -69,35 +68,43 @@ const Home: React.FC = () => {
             <div>
               <h4>Peça sua conta e cartão de crédito Gama Bank</h4>
             </div>
-            <form onSubmit={createAccount}>
+            <form onSubmit={handleSubmit(createAccount)}>
+              {errors.cpf && <span className="form-error">Esse campo é obrigatório</span>}
               <InputMask
                 mask="999.999.999-99"
-                onChange={(e) => setCpf(e.target.value)}
-                value={cpf}
+                name="cpf"
+                ref={register({ required: true }) as any}
                 placeholder="Digite seu CPF"
               />
+              {errors.name && <span className="form-error">Esse campo é obrigatório</span>}
               <input
                 type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                name="name"
+                ref={register({ required: true })}
                 placeholder="Nome completo"
               />
+              {errors.userName && <span className="form-error">Esse campo é obrigatório</span>}
               <input
                 type="text"
-                value={userName}
-                onChange={(e) => setUserName(e.target.value)}
+                name="userName"
+                ref={register({ required: true })}
                 placeholder="Nome do usuário"
               />
+              {errors.password && <span className="form-error">Esse campo é obrigatório</span>}
               <input
                 type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                name="password"
+                ref={register({ required: true })}
                 placeholder="Digite sua senha"
               />
+              {errors.confirmPassword && <span className="form-error">As senhas não correspondem</span>}
               <input
                 type="password"
-                value={confirmPass}
-                onChange={(e) => setConfirmPass(e.target.value)}
+                name="confirmPassword"
+                ref={register({
+                  required: true,
+                  validate: value => value === getValues('password')
+                }) as any}
                 placeholder="Confirme sua senha"
               />
               <button type="submit">
@@ -114,5 +121,4 @@ const Home: React.FC = () => {
     </HomePage>
   );
 };
-
 export default Home;
