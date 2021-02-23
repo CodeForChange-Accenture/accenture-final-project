@@ -62,6 +62,16 @@ const AccountAct: Reducer<any> = (state = INITIAL_STATE, action) => {
                 banco: {...state.banco,...state.banco.contaBanco.saldo += -saldoRemove}
             }
         }
+        case "RELOAD_ACCOUNT_CREDIT": {
+            const {saldoCredit} = action.payload
+
+            return {...state,
+                banco: {...state.banco,
+                    ...state.banco.contaCredito.saldo += saldoCredit,
+                     ...state.banco.contaBanco.saldo += -saldoCredit
+                }
+            }
+        }
         default:{
             return state
         }

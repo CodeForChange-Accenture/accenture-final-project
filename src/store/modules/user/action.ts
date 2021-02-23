@@ -35,3 +35,12 @@ export function ReloadAccountRemove(saldoRemove:number){
         }
     }
 }
+
+export function ReloadAccountCredit(saldoCredit:number){
+    return{
+        type: "RELOAD_ACCOUNT_CREDIT",
+        payload:{
+            saldoCredit
+        }
+    }
+}

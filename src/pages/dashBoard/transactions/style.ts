@@ -30,20 +30,25 @@ margin: 40px 145px;
             }
             button{
                 cursor: pointer;
-                    border: none;
-                    border-radius: 30px;
-                    padding: 5px 10px;
-                    width: 280px;
-                    text-align: left;
-                    transition: 0.5s;
-                    color: #8C52E5;
-                    font-size: 20px;
-                    font-weight: 300;
-                    border: 1px solid #8C52E5;
-                    margin: 20px 0;
+                border: none;
+                border-radius: 30px;
+                padding: 5px 10px;
+                width: 350px;
+                text-align: left;
+                transition: 0.5s;
+                color: #8C52E5;
+                font-size: 20px;
+                font-weight: 300;
+                border: 1px solid #8C52E5;
+                margin: 20px 0;
                     &:hover{
                         background: #68DE5A;
                     }
+            }
+        }
+        .transaction-credit{
+            input{
+                padding: 35px 0 0 0;
             }
         }
     }
