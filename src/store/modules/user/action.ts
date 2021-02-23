@@ -18,11 +18,29 @@ export function LoadAccountPlans(plan: IBank){
     }
 }
 
-export function ReloadAccount(saldo:number){
+export function ReloadAccountAdd(saldoAdd:number){
     return{
-        type: "RELOAD_ACCOUNT_INFO",
+        type: "RELOAD_ACCOUNT_INFO_ADD",
         payload:{
-            saldo
+            saldoAdd
+        }
+    }
+}
+
+export function ReloadAccountRemove(saldoRemove:number){
+    return{
+        type: "RELOAD_ACCOUNT_INFO_REMOVE",
+        payload:{
+            saldoRemove
+        }
+    }
+}
+
+export function ReloadAccountCredit(saldoCredit:number){
+    return{
+        type: "RELOAD_ACCOUNT_CREDIT",
+        payload:{
+            saldoCredit
         }
     }
 }
