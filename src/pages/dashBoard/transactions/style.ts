@@ -6,6 +6,7 @@ height: 300px;
 border-radius: 10px;
 padding:20px;
 margin: 40px 145px;
+overflow:auto;
     p{
     color:black;
     }
@@ -14,6 +15,7 @@ margin: 40px 145px;
         justify-content:space-around;
         margin:-10px 0;
         padding:0;
+        flex-wrap:wrap;
         form{
             margin: 10px;
             width: 30vw;
@@ -40,11 +42,16 @@ margin: 40px 145px;
                 font-size: 20px;
                 font-weight: 300;
                 border: 1px solid #8C52E5;
-                margin: 20px 0;
+                margin: 15px 0 0 0;
                     &:hover{
                         background: #68DE5A;
                     }
             }
+            input[type=date]{
+                color: #333333;
+                text-transform: uppercase;
+                font-style:italic;
+            } 
         }
         .transaction-credit{
             input{
