@@ -132,7 +132,11 @@ export const Main = styled.div`
             }
         }
         .eye-visible{
+            display:flex;
             cursor:pointer;
+            svg{
+                margin-left: 15px;
+            }
         }
         .date-ranges{
             display:flex;

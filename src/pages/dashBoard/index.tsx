@@ -17,10 +17,11 @@ import {
   FiCreditCard,
   FiEye,
   FiEyeOff,
+  FiLogOut,
 } from "react-icons/fi";
 import api from "../../services/api";
 
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import Deposit from "./deposit";
 import Transactions from "./transactions";
@@ -81,6 +82,7 @@ const DashBoard: React.FC = () => {
       .then((response) => {
         dispatch(LoadAccountPlans(response.data));
       });
+    console.log("teste");
   }, [inicio, fim]);
 
   return (
@@ -112,8 +114,15 @@ const DashBoard: React.FC = () => {
                 Olá <b>{login}</b>, seja bem vindo!
               </p>
             </div>
-            <div className="eye-visible" onClick={() => setVisible(!visible)}>
-              {visible ? <FiEye size={35} /> : <FiEyeOff size={35} />}
+            <div className="eye-visible">
+              <div onClick={() => setVisible(!visible)}>
+                {visible ? <FiEye size={35} /> : <FiEyeOff size={35} />}
+              </div>
+              <div>
+                <Link to="/">
+                  <FiLogOut onClick={() => localStorage.clear()} size={35} />
+                </Link>
+              </div>
             </div>
           </div>
           <div className="main-board">
