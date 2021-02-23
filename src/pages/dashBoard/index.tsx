@@ -33,6 +33,10 @@ import Plans from "./plans";
 import jwt_decode from "jwt-decode";
 import { IUser } from "../../store/modules/user/types";
 
+const formatMoney = (value: number) => {
+  return new Intl.NumberFormat().format(value)
+}
+
 const DashBoard: React.FC = () => {
   const history = useHistory();
   const [bankAction, setBankAction] = useState("");
@@ -146,7 +150,7 @@ const DashBoard: React.FC = () => {
                 <div className="account-balance">
                   <label>Saldo disponivel</label>
                   <h2>
-                    {visible ? `R$: ${state.banco.contaBanco.saldo}` : `*****`}
+                    {visible ? `R$: ${formatMoney(state.banco.contaBanco.saldo)}` : `*****`}
                   </h2>
                   <br />
                   <label>Limite disponivel:</label>
@@ -201,7 +205,7 @@ const DashBoard: React.FC = () => {
                   <div className="historic-list">
                     <h4>{lancamentos.descricao}</h4>
                     <label>GamaAcademy</label>
-                    <h2>R$ {lancamentos.valor}</h2>
+                    <h2>R$ {formatMoney(lancamentos.valor)}</h2>
                   </div>
                   <div className="historic-day">
                     <label>{lancamentos.data}</label>
