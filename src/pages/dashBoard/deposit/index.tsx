@@ -1,19 +1,20 @@
-import React, { FormEvent, useState } from "react";
-import { useSelector } from "react-redux";
+import React, { FormEvent, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import api from "../../../services/api";
-import { IBank } from "../../../store/modules/user/types";
+import {
+  AddAccountInfos,
+  ReloadAccount,
+} from "../../../store/modules/user/action";
+import { IBank, IProps } from "../../../store/modules/user/types";
 import { DashBoardDeposit } from "./style";
 // import { Container } from './styles';
-
-interface IProps {
-  loginToken?: string;
-}
 
 const Deposit: React.FC<IProps> = ({ loginToken }: IProps) => {
   const state = useSelector((state: IBank) => state);
   const [data, setData] = useState("");
   const [descricao, setDescricao] = useState("");
-  const [valor, setValor] = useState<any>(0);
+  const [valor, setValor] = useState<number>(0);
+  const dispatch = useDispatch();
 
   const handlePlanoConta = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -43,16 +44,20 @@ const Deposit: React.FC<IProps> = ({ loginToken }: IProps) => {
         })
         .then((response) => {
           if (response.status == 200) {
+            dispatch(ReloadAccount(valor));
           } else {
             alert("Erro no deposito");
           }
+        })
+        .catch(() => {
+          console.log(state.banco.contaBanco.saldo);
         });
     } catch (e) {
       alert("Algo deu errado!");
     }
     setData("");
     setDescricao("");
-    setValor("");
+    setValor(0);
   };
 
   return (
@@ -73,7 +78,7 @@ const Deposit: React.FC<IProps> = ({ loginToken }: IProps) => {
               value={descricao}
             />
             <input
-              onChange={(e) => setValor(e.target.value)}
+              onChange={(e) => setValor(+e.target.value)}
               type="number"
               placeholder="Valor"
               value={valor}

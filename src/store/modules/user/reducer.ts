@@ -38,15 +38,22 @@ const INITIAL_STATE: IBank = {
     }]
 }
 
-const AccountAct: Reducer = (state = INITIAL_STATE, action) => {
+const AccountAct: Reducer<any> = (state = INITIAL_STATE, action) => {
     switch(action.type){
         case "ADD_ACCOUNT_INFO": {
-            const {banco} = action.payload            
+            const {banco} = action.payload
             return {...state,banco}
         }
         case "LOAD_ACCOUNT_PLANS":{
             const {plan} = action.payload  
             return {...state,plan}
+        }
+        case "RELOAD_ACCOUNT_INFO":{
+            const {saldo} = action.payload
+
+            return {...state,
+                banco: {...state.banco,...state.banco.contaBanco.saldo += saldo}
+            }
         }
         default:{
             return state

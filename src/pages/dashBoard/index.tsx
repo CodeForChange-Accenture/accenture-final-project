@@ -58,33 +58,38 @@ const DashBoard: React.FC = () => {
   const login = TokenDecodedValue();
 
   useEffect(() => {
-    api
-      .get(`dashboard?fim=${fim}&inicio=${inicio}&login=${login}`, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: localStorage.getItem("@tokenApp"),
-        },
-      })
-      .then((response) => {
-        dispatch(AddAccountInfos(response.data));
-      })
-      .catch((e) => {
-        localStorage.clear();
-        toast.error("Ops, sua sessão está inspirada.");
-        history.push("/login");
-      });
+    async function loadBankInfo() {
+      await api
+        .get(`dashboard?fim=${fim}&inicio=${inicio}&login=${login}`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: localStorage.getItem("@tokenApp"),
+          },
+        })
+        .then((response) => {
+          dispatch(AddAccountInfos(response.data));
+        })
+        .catch((e) => {
+          localStorage.clear();
+          toast.error("Ops, sua sessão está inspirada.");
+          history.push("/login");
+        });
+    }
 
-    api
-      .get(`/lancamentos/planos-conta?login=${login}`, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: localStorage.getItem("@tokenApp"),
-        },
-      })
-      .then((response) => {
-        dispatch(LoadAccountPlans(response.data));
-      });
-    console.log("teste");
+    async function loadAccount() {
+      await api
+        .get(`/lancamentos/planos-conta?login=${login}`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: localStorage.getItem("@tokenApp"),
+          },
+        })
+        .then((response) => {
+          dispatch(LoadAccountPlans(response.data));
+        });
+    }
+    loadBankInfo();
+    loadAccount();
   }, [inicio, fim]);
 
   return (
@@ -196,7 +201,7 @@ const DashBoard: React.FC = () => {
                   <div className="historic-list">
                     <h4>{lancamentos.descricao}</h4>
                     <label>GamaAcademy</label>
-                    <h2>{lancamentos.valor}</h2>
+                    <h2>R$ {lancamentos.valor}</h2>
                   </div>
                   <div className="historic-day">
                     <label>{lancamentos.data}</label>

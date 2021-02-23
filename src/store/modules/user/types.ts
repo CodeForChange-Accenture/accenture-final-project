@@ -12,6 +12,10 @@ export interface IHistoric{
   tipo: string
 }
 
+export interface IProps {
+  loginToken?: string;
+}
+
 export interface IDataAccount {
     contaBanco: {
       saldo: number;

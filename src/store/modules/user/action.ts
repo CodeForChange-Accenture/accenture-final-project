@@ -17,3 +17,12 @@ export function LoadAccountPlans(plan: IBank){
         }
     }
 }
+
+export function ReloadAccount(saldo:number){
+    return{
+        type: "RELOAD_ACCOUNT_INFO",
+        payload:{
+            saldo
+        }
+    }
+}
