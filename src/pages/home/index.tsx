@@ -1,9 +1,10 @@
 import React, { useState, FormEvent } from "react";
 import { Link, useHistory } from "react-router-dom";
+import InputMask from "react-input-mask";
+import { FiArrowRight } from "react-icons/fi";
+
 import { HomePage } from "./style";
 import Logo from "../../img/logo.png";
-
-import { FiArrowRight } from "react-icons/fi";
 
 import api from "../../services/api";
 import SectionB from "./sectionB";
@@ -69,10 +70,10 @@ const Home: React.FC = () => {
               <h4>Peça sua conta e cartão de crédito Gama Bank</h4>
             </div>
             <form onSubmit={createAccount}>
-              <input
-                type="text"
-                value={cpf}
+              <InputMask
+                mask="999.999.999-99"
                 onChange={(e) => setCpf(e.target.value)}
+                value={cpf}
                 placeholder="Digite seu CPF"
               />
               <input
@@ -99,7 +100,9 @@ const Home: React.FC = () => {
                 onChange={(e) => setConfirmPass(e.target.value)}
                 placeholder="Confirme sua senha"
               />
-              <button type="submit">Continuar</button>
+              <button type="submit">
+                Continuar <FiArrowRight size={20} />
+              </button>
             </form>
           </div>
         </div>
