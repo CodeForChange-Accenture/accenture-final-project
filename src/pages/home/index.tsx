@@ -3,6 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import InputMask from "react-input-mask";
 import { FiArrowRight } from "react-icons/fi";
 import { useForm } from "react-hook-form";
+import { toast, ToastContainer } from "react-toastify";
 
 import { HomePage } from "./style";
 import Logo from "../../img/logo.png";
@@ -35,21 +36,23 @@ const Home: React.FC = () => {
       senha: data.password,
     }
 
-    try {
-      api.post(`usuarios`, postData).then((response) => {
+    api.post(`usuarios`, postData)
+      .then((response) => {
         if (response.status === 200) {
           history.push("/login");
         } else {
-          alert("Erro no cadastro");
+          toast.error("Erro no cadastro!");
         }
-      });
-    } catch (e) {
-      alert("Algo deu errado!");
-    }
+      })
+      .catch(() => {
+        toast.error("Algo deu errado!");
+      })
   }
+
 
   return (
     <HomePage>
+      <ToastContainer />
       <div className="home">
         <Link to="/">
           <img className="logo-gama" src={Logo} alt="" />
