@@ -4,7 +4,9 @@ export const DashBoardDeposit = styled.div`
 background:white;
 height: 300px;
 border-radius: 10px;
-padding: 40px;
+padding: 20px;
+margin: 40px 145px;
+
     p{
     color:black !important;
     }
@@ -17,7 +19,7 @@ padding: 40px;
                     font-size: 20px;
                     font-weight: 500;
                     text-align:left;
-                    width: 90%;
+                    width: 100%;
                     margin: 25px 0 30px 0;
                     border-bottom: 2px solid #9B9B9B;
                 }

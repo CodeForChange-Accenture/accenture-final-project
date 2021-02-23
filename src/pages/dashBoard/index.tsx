@@ -134,7 +134,9 @@ const DashBoard: React.FC = () => {
           </div>
           <div className="main-board">
             {bankAction === "deposit" && <Deposit loginToken={login} />}
-            {bankAction === "transactions" && <Transactions />}
+            {bankAction === "transactions" && (
+              <Transactions loginToken={login} />
+            )}
             {bankAction === "payments" && <Payment />}
             {bankAction === "plan" && <Plans />}
             <div className="balance-infos">

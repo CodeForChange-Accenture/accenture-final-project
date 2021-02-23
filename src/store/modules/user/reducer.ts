@@ -48,11 +48,18 @@ const AccountAct: Reducer<any> = (state = INITIAL_STATE, action) => {
             const {plan} = action.payload  
             return {...state,plan}
         }
-        case "RELOAD_ACCOUNT_INFO":{
-            const {saldo} = action.payload
+        case "RELOAD_ACCOUNT_INFO_ADD":{
+            const {saldoAdd} = action.payload
 
             return {...state,
-                banco: {...state.banco,...state.banco.contaBanco.saldo += saldo}
+                banco: {...state.banco,...state.banco.contaBanco.saldo += saldoAdd}
+            }
+        }
+        case "RELOAD_ACCOUNT_INFO_REMOVE":{
+            const {saldoRemove} = action.payload
+
+            return {...state,
+                banco: {...state.banco,...state.banco.contaBanco.saldo += -saldoRemove}
             }
         }
         default:{

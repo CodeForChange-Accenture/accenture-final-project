@@ -4,8 +4,9 @@ export const DashBoardPlan = styled.div`
 background:white;
 height: 300px;
 border-radius: 10px;
-padding: 30px;
+padding: 20px;
 overflow:auto;
+margin: 40px 145px;
     div{
     margin: 0;
     display: flex;

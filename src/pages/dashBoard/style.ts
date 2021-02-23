@@ -15,16 +15,16 @@ background:#8C52E5;
             min-height: 250px;
             flex-wrap:wrap;
             border-radius: 10px;
-            margin-left: 140px;
+            margin: 0px 140px;
                 .account, .credit{
                     display:flex;
                     text-align:left;
                     flex-direction:column;
-                    justify-content:center;
+                    justify-content:space-around;
                     padding:50px;
                     border-radius: 10px;
                     background: white;
-                    margin: 8px;
+                    margin:0px 4px;
                     width: 48%;
                     .account-balance, .credit-balance{
                         display: block;
@@ -54,7 +54,7 @@ background:#8C52E5;
             height: 500px;
             margin-top: -10px;
             overflow:auto;
-            
+            margin: 40px 145px;
             div{
                 margin: 10px 0;
             }
@@ -125,7 +125,7 @@ export const Main = styled.div`
         bottom: 0px;
         left: 10em;
         overflow:auto;
-        div{
+        .main-message{
             margin: 50px 150px;
             p{
                 color:white;
