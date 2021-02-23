@@ -12,12 +12,14 @@ import {
 
 import { DashBoardPage, SideBar, Main } from "./style";
 import {
-  FiCommand,
   FiDollarSign,
   FiCreditCard,
   FiEye,
   FiEyeOff,
   FiLogOut,
+  FiMaximize2,
+  FiBook,
+  FiCornerDownRight,
 } from "react-icons/fi";
 import api from "../../services/api";
 
@@ -91,19 +93,19 @@ const DashBoard: React.FC = () => {
         <SideBar>
           <img src={logoHandGama} alt="Green logo Gama" />
           <div onClick={() => setBankAction("deposit")}>
-            <FiCommand size={30} />
+            <FiCornerDownRight size={30} />
             <p>Depósitos</p>
           </div>
           <div onClick={() => setBankAction("plan")}>
-            <FiCommand size={30} />
+            <FiBook size={30} />
             <p>Planos</p>
           </div>
           <div onClick={() => setBankAction("payments")}>
-            <FiCommand size={30} />
+            <FiCreditCard size={30} />
             <p>Pagamentos</p>
           </div>
           <div onClick={() => setBankAction("transactions")}>
-            <FiCommand size={30} />
+            <FiMaximize2 size={30} />
             <p>Transações</p>
           </div>
         </SideBar>

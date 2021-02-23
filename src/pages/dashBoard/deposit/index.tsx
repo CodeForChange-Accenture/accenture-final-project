@@ -20,7 +20,10 @@ const Deposit: React.FC<IProps> = ({ loginToken }: IProps) => {
     const tipoMovimento = state.plan.filter(
       (state) => state.tipoMovimento == "R"
     );
-
+    if (valor < 0) {
+      setValor(0);
+      return;
+    }
     const postData = {
       conta: state.banco.contaBanco.id,
       data: data,
@@ -47,6 +50,9 @@ const Deposit: React.FC<IProps> = ({ loginToken }: IProps) => {
     } catch (e) {
       alert("Algo deu errado!");
     }
+    setData("");
+    setDescricao("");
+    setValor("");
   };
 
   return (
@@ -55,16 +61,23 @@ const Deposit: React.FC<IProps> = ({ loginToken }: IProps) => {
       <div>
         <div>
           <form onSubmit={handlePlanoConta}>
-            <input onChange={(e) => setData(e.target.value)} type="date" />
+            <input
+              onChange={(e) => setData(e.target.value)}
+              type="date"
+              value={data}
+            />
             <input
               onChange={(e) => setDescricao(e.target.value)}
               type="text"
               placeholder="Descrição"
+              value={descricao}
             />
             <input
               onChange={(e) => setValor(e.target.value)}
-              type="text"
+              type="number"
               placeholder="Valor"
+              value={valor}
+              min="0"
             />
             <div>
               <button type="submit">Confirmar deposito</button>
