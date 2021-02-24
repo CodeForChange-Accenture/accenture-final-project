@@ -59,4 +59,28 @@ overflow:auto;
             }
         }
     }
+    @media screen and (max-width: 858px) {
+    background:white;
+    height: 300px;
+    border-radius: 10px;
+    padding:10px;
+    margin: 20px;
+    overflow:auto;
+    font-size: 10px;
+    width: 90%;
+        .transaction-main{
+            form{
+                input{
+                    background:transparent;
+                    font-size: 10px;
+                    border-bottom: 2px solid #9B9B9B;
+                }
+                button{
+                    width: 150px;
+                    text-align: left;
+                    font-size: 11px;
+                }
+            }
+        }
+    }
 `
