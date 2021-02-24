@@ -62,7 +62,7 @@ const Deposit: React.FC<IProps> = ({ loginToken }: IProps) => {
 
   return (
     <DashBoardDeposit>
-      <h3>Deposito</h3>
+      <h3>Depósito</h3>
       <div>
         <form onSubmit={handlePlanoConta}>
           <input type="date" name="data" defaultValue="" />
@@ -75,7 +75,7 @@ const Deposit: React.FC<IProps> = ({ loginToken }: IProps) => {
             step=".01"
           />
           <div>
-            <button type="submit">Confirmar deposito</button>
+            <button type="submit">Confirmar depósito</button>
           </div>
         </form>
       </div>

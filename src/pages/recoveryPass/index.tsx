@@ -53,13 +53,13 @@ const RecoveryPass: React.FC = () => {
         <form onSubmit={createAccount}>
           <h3 className="title-recovery">Esqueci minha senha</h3>
           <p id="subtitle-recovery">
-            Confirme seu CPF e escolha sua nova senha.
+            Confirme seu Usuário e escolha sua nova senha.
           </p>
           <input
             type="text"
             value={user}
             onChange={(e) => setUser(e.target.value)}
-            placeholder="Confirme seu Usuario"
+            placeholder="Confirme seu Usuário"
           />
           <input
             type="password"

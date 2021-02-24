@@ -110,4 +110,10 @@ export const HomePage = styled.div`
 
         }
     }
+
+    .form-error {
+        font-size: 10px;
+        color: red;
+    }
+}
 `
