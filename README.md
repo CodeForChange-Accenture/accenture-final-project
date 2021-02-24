@@ -82,10 +82,12 @@
 <p>Para instalar as dependencias</p>
 
 ### `yarn`
+### `npm install`
 
 <p>Para iniciar o projeto</p>
 
 ### `yarn start`
+### `npm start`
 
 <h1 id="estrutura">Estrutura</h1>
 <p>O projeto foi dividido em pastas onde cada uma possui sua particularidade e funcionalidade, são elas:</p>
