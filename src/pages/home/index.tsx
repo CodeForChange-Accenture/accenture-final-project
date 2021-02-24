@@ -10,6 +10,8 @@ import SectionB from "./sectionB";
 import SectionC from "./sectionC";
 import SectionD from "./sectionD";
 import SectionE from "./sectionE";
+import { toast } from "react-toastify";
+
 
 const Home: React.FC = () => {
   const history = useHistory();
@@ -31,7 +33,7 @@ const Home: React.FC = () => {
     };
 
     if (password !== confirmPass) {
-      alert("Confirm pass");
+      toast.error("As senhas são diferentes")
       return;
     }
 
@@ -40,11 +42,11 @@ const Home: React.FC = () => {
         if (response.status == 200) {
           history.push("/login");
         } else {
-          alert("Erro no cadastro");
+          toast.error("Erro no Cadastro")
         }
       });
     } catch (e) {
-      alert("Algo deu errado!");
+      toast.error("Algo deu Errado")
     }
   }
 
@@ -74,30 +76,35 @@ const Home: React.FC = () => {
                 value={cpf}
                 onChange={(e) => setCpf(e.target.value)}
                 placeholder="Digite seu CPF"
+                required={true}
               />
               <input
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Nome completo"
+                required={true}
               />
               <input
                 type="text"
                 value={userName}
                 onChange={(e) => setUserName(e.target.value)}
                 placeholder="Nome do usuário"
+                required={true}
               />
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Digite sua senha"
+                required={true}
               />
               <input
                 type="password"
                 value={confirmPass}
                 onChange={(e) => setConfirmPass(e.target.value)}
                 placeholder="Confirme sua senha"
+                required={true}
               />
               <button type="submit">Continuar</button>
             </form>

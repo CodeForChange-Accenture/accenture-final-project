@@ -95,6 +95,8 @@ export const SideBar = styled.div`
         background: #63dc3f;
         height: 100vh;
         width: 10em;
+        box-shadow:4px 0px rgba(0, 0, 0, 0.1);
+
         img{
             margin: 15px;
         }
@@ -107,11 +109,16 @@ export const SideBar = styled.div`
             width: 6em;
             padding: 10px;
             margin: 20px 35px;
+            transition: 0.5s;
             p{
                 font-size: 14px;
                 font-weight: bold;
                 text-align:left;
                 margin-top: 25px;
+            }
+            :hover{
+                transition: 0.5s;
+                background: #7243b9;
             }
         }
     
