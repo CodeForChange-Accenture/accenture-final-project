@@ -2,10 +2,11 @@
     <img src="src/img/logobank.png">
     <h1 align="center">GamaBank</h1>
 </div>
-<p id="sobre">Projeto desenvolvido para Accenture durante as semanas de estudo com a Gama utilizando React Js seguindo
+<p id="sobre">Projeto desenvolvido para Accenture durante as semanas de estudo com a <a
+        href="https://www.gama.academy/">GamaAcademy</a> utilizando ReactJS e seguindo
     o <a
         href="https://www.figma.com/file/tdrTDIY2hal9Ky4fbTvBl2/DesafioGamaAccenture_1_2-desktop?node-id=1%3A2">layout</a>
-    disponibilizado no Figma.
+    disponibilizado no Figma pela equipe do Gama.
 <p>
 
 <h1>Tabela de conteúdos</h1>
@@ -50,7 +51,7 @@
 
 <ul>
     <li>
-        <a href="https://github.com/facebook/react">React Js</a>
+        <a href="https://github.com/facebook/react">ReactJS</a>
     </li>
     <li>
         <a href="https://github.com/reduxjs/redux">Redux</a>
@@ -59,19 +60,22 @@
         <a href="https://github.com/microsoft/TypeScript">TypeScript</a>
     </li>
     <li>
-        <a href="https://github.com/fkhadra/react-toastify">React toastify</a>
+        <a href="https://github.com/styled-components/styled-components">Styled Components</a>
     </li>
     <li>
         <a href="https://github.com/axios/axios">Axios</a>
     </li>
     <li>
-        <a href="https://github.com/styled-components/styled-components">Styled Components</a>
+        <a href="https://github.com/fkhadra/react-toastify">React toastify</a>
     </li>
     <li>
         <a href="https://github.com/sanniassin/react-input-mask">React Input Mask</a>
     </li>
     <li>
         <a href="https://react-hook-form.com/">React Hook Forms</a>
+    </li>
+    <li>
+        <a href="https://react-icons.github.io/react-icons/">React Icons</a>
     </li>
 </ul>
 
@@ -82,7 +86,7 @@
     repositório e utilizar os seguintes scripts:
 </p>
 
-<p>Para instalar as dependencias</p>
+<p>Para instalar as dependências</p>
 
 ### `yarn`
 ### `npm install`
