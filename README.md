@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="src/img/logo.png">
+    <img src="src/img/logobank.png">
     <h1 align="center">NuFake</h1>
 </div>
 <p id="sobre">Projeto desenvolvido para Accenture durante as semanas de estudo com a Gama utilizando React Js seguindo
@@ -91,26 +91,31 @@
 <p>O projeto foi dividido em pastas onde cada uma possui sua particularidade e funcionalidade, são elas:</p>
 
 <strong>src</strong>
+
 <p>A pasta <b>src</b> concentra todo o projeto e suas subpastas, onde o Index é o arquivo de renderização dos
     componentes e App é o arquivo utilizado para definir o uso da store <a href="#tecnologias">Redux</a>, rotas e
     estilos globais.</p>
 <hr>
 
-<strong>__tests__</strong>
+<strong>**tests**</strong>
+
 <p>A pasta <b>__tests__</b> concentra todos os testes unitários.</p>
 <hr>
 
 <strong>img</strong>
+
 <p>A pasta <b>img</b> concentra todas as imagens utilizadas.</p>
 <hr>
 
 <strong>pages</strong>
+
 <p>A pasta <b>pages</b> é dividida em subpastas as quais os titulos são as paginas, componentes e estilização da
     aplicação, em especial as pastas dashboard e home possuem outra camada de subpastas que dividem os seus componentes
     em outros diretórios. </p>
 <hr>
 
 <strong>routes</strong>
+
 <p>A pasta <b>routes</b> possui dois arquivos, <b>privateRoutes</b> para rotas privadas e <b>Index</b> para as rotas
     publicas.</p>
 <hr>
@@ -121,6 +126,7 @@
 <hr>
 
 <strong>store</strong>
+
 <p>A pasta <b>store</b> é utilizada para armazenar os arquivos referentes ao <a href="#tecnologias">Redux</a>, a qual
     possui um arquivo <b>Index</b> para criar sua store e as subpastas <b>modules/user</b> as actions reducers e
     interfaces(ts) do <a href="#tecnologias">Redux</a></p>
@@ -146,6 +152,6 @@
 - [x] Consumo de api;
 - [x] Uso de typescript;
 - [x] Fidelização de <a
-    href="https://www.figma.com/file/tdrTDIY2hal9Ky4fbTvBl2/DesafioGamaAccenture_1_2-desktop?node-id=1%3A2">layout</a>;
+                                            href="https://www.figma.com/file/tdrTDIY2hal9Ky4fbTvBl2/DesafioGamaAccenture_1_2-desktop?node-id=1%3A2">layout</a>;
 - [x] Testes unitários;
 - [x] Máscara e validação de inputs;
