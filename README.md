@@ -3,9 +3,9 @@
     <h1 align="center">GamaBank</h1>
 </div>
 <p id="sobre">Projeto desenvolvido para Accenture durante as semanas de estudo com a Gama utilizando React Js seguindo
-    um <a
+    o <a
         href="https://www.figma.com/file/tdrTDIY2hal9Ky4fbTvBl2/DesafioGamaAccenture_1_2-desktop?node-id=1%3A2">layout</a>
-    feito com figma.
+    disponibilizado no Figma.
 <p>
 
 <h1>Tabela de conteúdos</h1>
@@ -39,7 +39,7 @@
         <a href="https://github.com/matheusCMendes">Matheus Cruz Mendes</a>
     </li>
     <li>
-        <a href="https://github.com/bettyap">Elisabeth Aparecida</a>
+        <a href="https://github.com/bettyap">Elisabeth Aparecida dos Santos Silva</a>
     </li>
     <li>
         <a href="https://github.com/nathanoliveiras">Nathan Oliveira Santos</a>
@@ -70,13 +70,16 @@
     <li>
         <a href="https://github.com/sanniassin/react-input-mask">React Input Mask</a>
     </li>
+    <li>
+        <a href="https://react-hook-form.com/">React Hook Forms</a>
+    </li>
 </ul>
 
 <h1 id="instalacao">Instalação</h1>
 
 <p>
-    Para instalar as dependencias e pacotes, basta clonar o
-    repositório eutilizar os seguintes scripts
+    Para instalar as dependências e pacotes, basta clonar o
+    repositório e utilizar os seguintes scripts:
 </p>
 
 <p>Para instalar as dependencias</p>
@@ -111,7 +114,7 @@
 
 <strong>pages</strong>
 
-<p>A pasta <b>pages</b> é dividida em subpastas as quais os titulos são as paginas, componentes e estilização da
+<p>A pasta <b>pages</b> é dividida em subpastas as quais os títulos são as páginas, componentes e estilização da
     aplicação, em especial as pastas dashboard e home possuem outra camada de subpastas que dividem os seus componentes
     em outros diretórios. </p>
 <hr>
@@ -119,11 +122,11 @@
 <strong>routes</strong>
 
 <p>A pasta <b>routes</b> possui dois arquivos, <b>privateRoutes</b> para rotas privadas e <b>Index</b> para as rotas
-    publicas.</p>
+    públicas.</p>
 <hr>
 <strong>services</strong>
 <p>A pasta <b>services</b> possui a url base da api consumida no desenvolvimento e um outro arquivo chamado auth para
-    fácil
+     a fácil
     validação de autenticação via token guardado no <b>localStorage</b></p>
 <hr>
 
