@@ -1,6 +1,6 @@
 <div align="center">
     <img src="src/img/logobank.png">
-    <h1 align="center">NuFake</h1>
+    <h1 align="center">GamaBank</h1>
 </div>
 <p id="sobre">Projeto desenvolvido para Accenture durante as semanas de estudo com a Gama utilizando React Js seguindo
     um <a
