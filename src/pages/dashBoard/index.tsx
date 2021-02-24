@@ -27,7 +27,6 @@ import { Link, useHistory } from "react-router-dom";
 
 import Deposit from "./deposit";
 import Transactions from "./transactions";
-import Payment from "./payments";
 import Plans from "./plans";
 
 import jwt_decode from "jwt-decode";
@@ -105,10 +104,6 @@ const DashBoard: React.FC = () => {
             <FiBook size={30} />
             <p>Planos</p>
           </div>
-          <div onClick={() => setBankAction("payments")}>
-            <FiCreditCard size={30} />
-            <p>Pagamentos</p>
-          </div>
           <div onClick={() => setBankAction("transactions")}>
             <FiMaximize2 size={30} />
             <p>Transações</p>
@@ -137,7 +132,6 @@ const DashBoard: React.FC = () => {
             {bankAction === "transactions" && (
               <Transactions loginToken={login} />
             )}
-            {bankAction === "payments" && <Payment />}
             {bankAction === "plan" && <Plans />}
             <div className="balance-infos">
               <div className="account">
