@@ -1,5 +1,5 @@
 <div align="center" >
-    <img style="background:#8C52E5 !important" src="src/img/logo.png">
+    <img style="background-color:#8C52E5 !important" src="src/img/logo.png">
     <h1 align="center">Gama Bank</h1>
 </div>
 <p id="sobre">Projeto desenvolvido para Accenture durante as semanas de estudo com a Gama utilizando React Js seguindo
