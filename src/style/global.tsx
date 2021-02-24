@@ -1,34 +1,37 @@
 import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
-*{
+  * {
     margin: 0;
     padding: 0;
     outline: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
-}
-#root{
+  }
+
+  #root {
     height: 100%;
-}
+  }
 
-img{
+  img {
     max-width: 100%;
-}
+  }
 
-a{
+  a {
     text-decoration: none;
-}
+  }
 
-*::-webkit-scrollbar {
+  *::-webkit-scrollbar {
     width: 8px;
-}
-*::-webkit-scrollbar-track {
+  }
+
+  *::-webkit-scrollbar-track {
     background: transparent;
-}
-*::-webkit-scrollbar-thumb {
+  }
+
+  *::-webkit-scrollbar-thumb {
     background-color: rgba(155, 155, 155, 0.5);
     border-radius: 20px;
     border: transparent;
-}
+  }
 `;
