@@ -152,6 +152,6 @@
 - [x] Consumo de api;
 - [x] Uso de typescript;
 - [x] Fidelização de <a
-                                            href="https://www.figma.com/file/tdrTDIY2hal9Ky4fbTvBl2/DesafioGamaAccenture_1_2-desktop?node-id=1%3A2">layout</a>;
+                                                href="https://www.figma.com/file/tdrTDIY2hal9Ky4fbTvBl2/DesafioGamaAccenture_1_2-desktop?node-id=1%3A2">layout</a>;
 - [x] Testes unitários;
 - [x] Máscara e validação de inputs;
