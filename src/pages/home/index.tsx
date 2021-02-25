@@ -79,7 +79,6 @@ const Home: React.FC = () => {
                 name="cpf"
                 ref={register({ required: true }) as any}
                 placeholder="Digite seu CPF"
-                required={true}
               />
               {errors.name && (
                 <span className="form-error">Esse campo é obrigatório</span>
@@ -89,7 +88,6 @@ const Home: React.FC = () => {
                 name="name"
                 ref={register({ required: true })}
                 placeholder="Nome completo"
-                required={true}
               />
               {errors.userName && (
                 <span className="form-error">Esse campo é obrigatório</span>
@@ -99,7 +97,6 @@ const Home: React.FC = () => {
                 name="userName"
                 ref={register({ required: true })}
                 placeholder="Nome do usuário"
-                required={true}
               />
               {errors.password && (
                 <span className="form-error">Esse campo é obrigatório</span>
@@ -109,7 +106,6 @@ const Home: React.FC = () => {
                 name="password"
                 ref={register({ required: true })}
                 placeholder="Digite sua senha"
-                required={true}
               />
               {errors.confirmPassword && (
                 <span className="form-error">As senhas não correspondem</span>
@@ -124,7 +120,6 @@ const Home: React.FC = () => {
                   }) as any
                 }
                 placeholder="Confirme sua senha"
-                required={true}
               />
               <button type="submit">
                 Continuar <FiArrowRight size={20} />

@@ -25,11 +25,11 @@ const RecoveryPass: React.FC = () => {
       usuario: user,
       senha: password,
     };
-    if (password !== confirmPass) {
-      toast.error("As senhas não são compativeis");
+    if (password !== confirmPass || (password || confirmPass == "")) {
+      toast.error("As senhas não são compativeis ou estão inválidas");
       return;
-    }
 
+    }else{
     api.post(`nova-senha`, postData).then((response) => {
       api
         .post("altera-senha", postData1, {
@@ -38,6 +38,7 @@ const RecoveryPass: React.FC = () => {
         .then(() => toast.success("A Nova senha foi definida"));
     });
   }
+}
   return (
     <RecoveryStyle>
       <header>
@@ -46,8 +47,7 @@ const RecoveryPass: React.FC = () => {
         </Link>
       </header>
 
-      <main className="recovery-wrapper">
-        <form onSubmit={createAccount}>
+      <div>        <form onSubmit={createAccount}>
           <h3 className="title-recovery">Esqueci minha senha</h3>
           <p id="subtitle-recovery">
             Confirme seu Usuário e escolha sua nova senha.
@@ -75,7 +75,7 @@ const RecoveryPass: React.FC = () => {
             <FiArrowRight size={20} />
           </button>
         </form>
-      </main>
+      </div>
     </RecoveryStyle>
   );
 };
