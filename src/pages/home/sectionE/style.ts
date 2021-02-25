@@ -38,4 +38,7 @@ export const Container = styled.div`
   .sectionRight {
     max-width: 440px;
   }
+  @media screen and (max-width: 1024px){
+    flex-direction: column;
+  }
   `
