@@ -25,11 +25,11 @@ const RecoveryPass: React.FC = () => {
       usuario: user,
       senha: password,
     };
-    if (password !== confirmPass) {
-      toast.error("As senhas não são compativeis");
+    if (password !== confirmPass || (password || confirmPass == "")) {
+      toast.error("As senhas não são compativeis ou estão inválidas");
       return;
-    }
 
+    }else{
     api.post(`nova-senha`, postData).then((response) => {
       api
         .post("altera-senha", postData1, {
@@ -38,6 +38,7 @@ const RecoveryPass: React.FC = () => {
         .then(() => toast.success("A Nova senha foi definida"));
     });
   }
+}
   return (
     <RecoveryStyle>
       <header>
