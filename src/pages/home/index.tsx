@@ -15,11 +15,11 @@ import SectionD from "./sectionD";
 import SectionE from "./sectionE";
 
 type Inputs = {
-  cpf: string,
-  name: string,
-  userName: string,
-  password: string,
-  confirmPassword: string,
+  cpf: string;
+  name: string;
+  userName: string;
+  password: string;
+  confirmPassword: string;
 };
 
 const Home: React.FC = () => {
@@ -28,15 +28,15 @@ const Home: React.FC = () => {
   const { register, handleSubmit, errors, getValues } = useForm<Inputs>();
 
   function createAccount(data: Inputs) {
-    
     const postData = {
       cpf: data.cpf.replace(/[^\d]/g, ""),
       nome: data.name,
       login: data.userName,
       senha: data.password,
-    }
+    };
 
-    api.post(`usuarios`, postData)
+    api
+      .post(`usuarios`, postData)
       .then((response) => {
         if (response.status === 200) {
           history.push("/login");
@@ -46,9 +46,8 @@ const Home: React.FC = () => {
       })
       .catch(() => {
         toast.error("Algo deu errado!");
-      })
+      });
   }
-
 
   return (
     <HomePage>
@@ -72,43 +71,60 @@ const Home: React.FC = () => {
               <h4>Peça sua conta e cartão de crédito Gama Bank</h4>
             </div>
             <form onSubmit={handleSubmit(createAccount)}>
-              {errors.cpf && <span className="form-error">Esse campo é obrigatório</span>}
+              {errors.cpf && (
+                <span className="form-error">Esse campo é obrigatório</span>
+              )}
               <InputMask
                 mask="999.999.999-99"
                 name="cpf"
                 ref={register({ required: true }) as any}
                 placeholder="Digite seu CPF"
+                required={true}
               />
-              {errors.name && <span className="form-error">Esse campo é obrigatório</span>}
+              {errors.name && (
+                <span className="form-error">Esse campo é obrigatório</span>
+              )}
               <input
                 type="text"
                 name="name"
                 ref={register({ required: true })}
                 placeholder="Nome completo"
+                required={true}
               />
-              {errors.userName && <span className="form-error">Esse campo é obrigatório</span>}
+              {errors.userName && (
+                <span className="form-error">Esse campo é obrigatório</span>
+              )}
               <input
                 type="text"
                 name="userName"
                 ref={register({ required: true })}
                 placeholder="Nome do usuário"
+                required={true}
               />
-              {errors.password && <span className="form-error">Esse campo é obrigatório</span>}
+              {errors.password && (
+                <span className="form-error">Esse campo é obrigatório</span>
+              )}
               <input
                 type="password"
                 name="password"
                 ref={register({ required: true })}
                 placeholder="Digite sua senha"
+                required={true}
               />
-              {errors.confirmPassword && <span className="form-error">As senhas não correspondem</span>}
+              {errors.confirmPassword && (
+                <span className="form-error">As senhas não correspondem</span>
+              )}
               <input
                 type="password"
                 name="confirmPassword"
-                ref={register({
-                  required: true,
-                  validate: value => value === getValues('password')
-                }) as any}
+                ref={
+                  register({
+                    required: true,
+                    validate: (value) => value === getValues("password"),
+                  }) as any
+                }
                 placeholder="Confirme sua senha"
+                required={true}
               />
               <button type="submit">
                 Continuar <FiArrowRight size={20} />

@@ -1,8 +1,8 @@
 import React, { useState, FormEvent } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../../img/logo.png";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.min.css";
+import { toast } from "react-toastify";
+
 import { RecoveryStyle } from "./style";
 import { FiArrowRight } from "react-icons/fi";
 
@@ -31,7 +31,6 @@ const RecoveryPass: React.FC = () => {
     }
 
     api.post(`nova-senha`, postData).then((response) => {
-      console.log(response.data);
       api
         .post("altera-senha", postData1, {
           params: { senhaTemporaria: response.data },
@@ -42,8 +41,6 @@ const RecoveryPass: React.FC = () => {
   return (
     <RecoveryStyle>
       <header>
-        <ToastContainer />
-
         <Link to="/">
           <img className="logo-gama" src={Logo} alt="" />
         </Link>
