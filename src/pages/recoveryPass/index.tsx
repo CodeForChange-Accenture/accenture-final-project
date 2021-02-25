@@ -1,8 +1,8 @@
 import React, { useState, FormEvent } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../../img/logo.png";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.min.css";
+import { toast } from "react-toastify";
+
 import { RecoveryStyle } from "./style";
 import { FiArrowRight } from "react-icons/fi";
 
@@ -25,13 +25,12 @@ const RecoveryPass: React.FC = () => {
       usuario: user,
       senha: password,
     };
-    if (password !== confirmPass) {
-      toast.error("As senhas não são compativeis");
+    if (password !== confirmPass || (password || confirmPass == "")) {
+      toast.error("As senhas não são compativeis ou estão inválidas");
       return;
-    }
 
+    }else{
     api.post(`nova-senha`, postData).then((response) => {
-      console.log(response.data);
       api
         .post("altera-senha", postData1, {
           params: { senhaTemporaria: response.data },
@@ -39,18 +38,16 @@ const RecoveryPass: React.FC = () => {
         .then(() => toast.success("A Nova senha foi definida"));
     });
   }
+}
   return (
     <RecoveryStyle>
       <header>
-        <ToastContainer />
-
         <Link to="/">
           <img className="logo-gama" src={Logo} alt="" />
         </Link>
       </header>
 
-      <main className="recovery-wrapper">
-        <form onSubmit={createAccount}>
+      <div>        <form onSubmit={createAccount}>
           <h3 className="title-recovery">Esqueci minha senha</h3>
           <p id="subtitle-recovery">
             Confirme seu Usuário e escolha sua nova senha.
@@ -78,7 +75,7 @@ const RecoveryPass: React.FC = () => {
             <FiArrowRight size={20} />
           </button>
         </form>
-      </main>
+      </div>
     </RecoveryStyle>
   );
 };

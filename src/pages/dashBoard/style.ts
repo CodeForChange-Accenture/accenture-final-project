@@ -89,6 +89,50 @@ background:#8C52E5;
                 color:#8C52E5;
             }
         }
+        
+    }
+    
+    @media screen and (max-width: 758px) {
+        .main-message {
+            display:block;
+            font-size: 10px;
+            margin:5px 20px !important;
+            p{
+            margin-bottom: 20px;
+            }
+            div{
+                svg{
+                height: 30px;
+                width: 30px;
+                }
+            }
+        }
+        .main-board{
+        background:#8C52E5;
+        margin: 0;
+        display: block;
+        label{
+            color:#9B9B9B;
+        }
+        .balance-infos{
+            margin: 20px;
+                .account, .credit{
+                    font-size: 10px;
+                    margin:10px 4px;
+                    width: 100%;
+                }
+            }
+        }
+        .last-sent{
+            overflow:auto;
+            margin: 20px;
+            font-size: 8px;
+            .date-ranges{
+                input[type=date]{
+                font-size: 7px;
+                }
+            }
+        }
     }
 `
 
@@ -102,6 +146,8 @@ export const SideBar = styled.div`
         background: #63dc3f;
         height: 100vh;
         width: 10em;
+        box-shadow:4px 0px rgba(0, 0, 0, 0.1);
+
         img{
             margin: 15px;
         }
@@ -114,14 +160,35 @@ export const SideBar = styled.div`
             width: 6em;
             padding: 10px;
             margin: 20px 35px;
+            transition: 0.5s;
             p{
                 font-size: 14px;
                 font-weight: bold;
                 text-align:left;
                 margin-top: 25px;
             }
+            :hover{
+                transition: 0.5s;
+                background: #7243b9;
+            }
         }
-    
+    @media screen and (max-width: 758px) {
+        background: #63dc3f;
+        width: 6em;
+        img{
+            margin: 0;
+            width: 100%;
+        }
+        div{
+            height: 3em;
+            width: 3em;
+            padding: 10px;
+            margin: 20px;
+            p{
+                display:none;
+            }
+        }
+    }
 `
 
 export const Main = styled.div`
@@ -164,5 +231,8 @@ export const Main = styled.div`
                 align-items:center;
                 margin-right: auto;
             }
+        }
+        @media screen and (max-width: 758px) {
+            left: 6em;
         }
 `

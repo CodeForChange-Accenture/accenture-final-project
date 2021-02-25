@@ -69,7 +69,7 @@ export const HomePage = styled.div`
                 padding: 20px;
 
                 input{
-                    display:block;
+                display:block;
                     border: none;
                     font-size: 14px;
                     line-height: 14px;

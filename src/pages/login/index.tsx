@@ -7,6 +7,8 @@ import api from "../../services/api";
 
 import Logo from "../../img/logo.png";
 import { Container, FormLogin, Header } from "./styles";
+import { toast } from "react-toastify";
+
 
 interface IToken {
   storage: string;
@@ -33,11 +35,11 @@ const Login: React.FC = () => {
     };
 
     api.post(`login`, postData).then((response) => {
-      console.log(response.data);
       localStorage.setItem("@tokenApp", response.data.token);
       history.push("/dashboard");
-    });
+    }).catch((e) =>{toast.error("Usuário ou senha inválidos")})
   }
+
   return (
     <Container>
       <Header>

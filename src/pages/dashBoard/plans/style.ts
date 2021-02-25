@@ -24,4 +24,19 @@ margin: 40px 145px;
         margin: 8px 8px;
     }
 }
+@media screen and (max-width: 758px) {
+    background:white;
+    height: 300px;
+    padding: 10px;
+    margin: 0 20px;
+    width:85%;
+    div{
+        p{
+        font-size: 10px;
+        }
+        section{
+            margin: 1px;
+        }
+    }
+}
 `

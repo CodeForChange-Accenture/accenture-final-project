@@ -46,4 +46,35 @@ margin: 40px 145px;
                 }
             }
     }
+    @media screen and (max-width: 758px) {
+        padding: 10px;
+        margin: 20px;
+        height: 180px;
+        width: 86%;
+            div{
+                form{
+                        input{
+                            font-size: 10px;
+                            font-weight: 500;
+                            width: 90%;
+                            margin: 12px 0 25px 0;
+                        }
+                        button{
+                            padding: 5px 10px;
+                            width: 130px;
+                            font-size: 10px;
+                            font-weight: 300;
+                            border: 1px solid #8C52E5;
+                            &:hover{
+                                background: #68DE5A;
+                            }
+                        }
+                        input[type=date]{
+                        color: #333333;
+                        text-transform: uppercase;
+                        font-style:italic;
+                        }
+            }
+        }
+    }
 `

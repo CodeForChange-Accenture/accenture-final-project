@@ -27,15 +27,14 @@ import { Link, useHistory } from "react-router-dom";
 
 import Deposit from "./deposit";
 import Transactions from "./transactions";
-import Payment from "./payments";
 import Plans from "./plans";
 
 import jwt_decode from "jwt-decode";
 import { IUser } from "../../store/modules/user/types";
 
 const formatMoney = (value: number) => {
-  return new Intl.NumberFormat().format(value)
-}
+  return new Intl.NumberFormat().format(value);
+};
 
 const DashBoard: React.FC = () => {
   const history = useHistory();
@@ -55,7 +54,7 @@ const DashBoard: React.FC = () => {
       const decoded = jwt_decode<IUser>(TokenDecode);
       return decoded.sub;
     } else {
-      alert("err");
+      toast.error("Erro autenticação");
     }
   };
 
@@ -109,10 +108,6 @@ const DashBoard: React.FC = () => {
             <FiBook size={30} />
             <p>Planos</p>
           </div>
-          <div onClick={() => setBankAction("payments")}>
-            <FiCreditCard size={30} />
-            <p>Pagamentos</p>
-          </div>
           <div onClick={() => setBankAction("transactions")}>
             <FiMaximize2 size={30} />
             <p>Transações</p>
@@ -141,7 +136,6 @@ const DashBoard: React.FC = () => {
             {bankAction === "transactions" && (
               <Transactions loginToken={login} />
             )}
-            {bankAction === "payments" && <Payment />}
             {bankAction === "plan" && <Plans />}
             <div className="balance-infos">
               <div className="account">
@@ -152,7 +146,9 @@ const DashBoard: React.FC = () => {
                 <div className="account-balance">
                   <label>Saldo disponível</label>
                   <h2>
-                    {visible ? `R$: ${formatMoney(state.banco.contaBanco.saldo)}` : `*****`}
+                    {visible
+                      ? `R$: ${formatMoney(state.banco.contaBanco.saldo)}`
+                      : `*****`}
                   </h2>
                   <br />
                   <label>Limite disponível:</label>
