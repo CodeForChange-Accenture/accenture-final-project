@@ -2,9 +2,9 @@ import React from "react";
 
 import { Switch, Route } from "react-router-dom";
 
-import PrivateRoute from './privateRoute';
+import PrivateRoute from "./privateRoute";
 
-import Dashboard from "../pages/dashBoard";
+import Dashboard from "../pages/dashboard";
 import RecoveryPass from "../pages/recoveryPass/index";
 import Error from "../pages/error/index";
 import Home from "../pages/home";
