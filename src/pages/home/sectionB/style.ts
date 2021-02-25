@@ -63,4 +63,44 @@ export const Container = styled.div`
     }
 
   }
+  @media screen and (max-width: 1024px){
+    flex-direction: column;
+    padding: 24px;
+    margin-left: 0;
+
+    section {
+      padding-top: 32px;
+      padding-bottom: 24px;
+      justify-content: center;
+      align-items: center;
+      
+
+      h2{
+        font-size: 24px;
+        line-height: 30px;
+      }  
+
+      p{
+        font-size: 16px;
+        line-height: 30px;
+        margin: 0;
+      }
+
+    .sectionLeft{
+      margin: 0;
+
+      p{
+      margin-left: 0;
+      }
+    }
+
+    .sectionRight{
+      padding-left: 0;
+
+      img{
+        width: 280px;
+      }
+    }
+  }
+}
 `
