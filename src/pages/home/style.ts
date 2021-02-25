@@ -60,6 +60,7 @@ export const HomePage = styled.div`
             padding: 20px;
             padding-top: 24px;
             flex: 0;
+            min-width: 380px;
             
             div{
                 padding: 0 20px;
@@ -90,7 +91,7 @@ export const HomePage = styled.div`
                 border: none;
                 border-radius: 100px;
                 padding: 15px 30px;
-                width: 325px;
+                width: 100%;
                 text-align: left;
                 transition: 0.5s;
                 color: #fff;
@@ -116,4 +117,28 @@ export const HomePage = styled.div`
         color: red;
     }
 }
+
+@media screen and (max-width: 1024px){
+    justify-content: center;
+    padding-left: 0;
+    .middle-div{
+        flex-direction: column;
+        justify-content: center;
+        padding: 40px;
+        margin: 0;
+
+        .signup-div{
+            min-width: auto;
+            width: 100%;  
+        }
+    }
+    .access-div{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-bottom: 48px;
+    }
+}
+
+
 `
