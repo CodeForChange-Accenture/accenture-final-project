@@ -1,5 +1,6 @@
 import React, { FormEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 import api from "../../../services/api";
 import { ReloadAccountAdd } from "../../../store/modules/user/action";
 import { IBank, IProps } from "../../../store/modules/user/types";
@@ -22,7 +23,7 @@ const Deposit: React.FC<IProps> = ({ loginToken }: IProps) => {
     const valorParaNumero: number = +data.valor;
 
     if (+data.valor < 0) {
-      alert("Valor inválido!");
+      toast.error("Valor inválido!");
       return;
     }
 
@@ -45,16 +46,17 @@ const Deposit: React.FC<IProps> = ({ loginToken }: IProps) => {
         })
         .then((response) => {
           if (response.status == 200) {
+            toast.success("Deposito realizado com sucesso!");
             dispatch(ReloadAccountAdd(valorParaNumero));
           } else {
-            alert("Erro no deposito");
+            toast.error("Erro no deposito");
           }
         })
         .catch(() => {
-          console.log(state.banco.contaBanco.saldo);
+          toast.error("Erro no deposito!");
         });
     } catch (e) {
-      alert("Algo deu errado!");
+      toast.error("Erro no deposito!");
     }
 
     event.currentTarget.reset();

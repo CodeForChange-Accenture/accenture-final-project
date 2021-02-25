@@ -7,6 +7,7 @@ import {
   ReloadAccountCredit,
   ReloadAccountRemove,
 } from "../../../store/modules/user/action";
+import { toast } from "react-toastify";
 
 const Transactions: React.FC<IProps> = ({ loginToken }: IProps) => {
   const dispatch = useDispatch();
@@ -24,7 +25,7 @@ const Transactions: React.FC<IProps> = ({ loginToken }: IProps) => {
     const valorParaNumero: number = +data.valor;
 
     if (valorParaNumero < 0) {
-      alert("Valor inválido!");
+      toast.error("Valor inválido!");
       return;
     }
 
@@ -48,19 +49,18 @@ const Transactions: React.FC<IProps> = ({ loginToken }: IProps) => {
         })
         .then((response) => {
           if (response.status == 200) {
+            toast.success("Transação realizada com sucesso!");
             dispatch(ReloadAccountRemove(valorParaNumero));
           } else {
-            alert("Erro no deposito");
+            toast.error("Erro na transação");
           }
         })
         .catch(() => {
-          console.log(state.banco.contaBanco.saldo);
+          toast.error("Erro na transação");
         });
     } catch (e) {
-      alert("Algo deu errado!");
+      toast.error("Algo deu errado!");
     }
-
-    console.log(data);
     event.currentTarget.reset();
   };
 
@@ -76,7 +76,7 @@ const Transactions: React.FC<IProps> = ({ loginToken }: IProps) => {
     const valorParaNumero: number = +data.valor;
 
     if (valorParaNumero < 0) {
-      alert("Valor inválido!");
+      toast.error("Valor inválido!");
       return;
     }
 
@@ -101,12 +101,14 @@ const Transactions: React.FC<IProps> = ({ loginToken }: IProps) => {
           if (response.status == 200) {
             dispatch(ReloadAccountCredit(valorParaNumero));
           } else {
-            alert("Erro na transação");
+            toast.error("Erro na transação");
           }
         })
-        .catch(() => {});
+        .catch(() => {
+          toast.error("Erro na transação");
+        });
     } catch (e) {
-      alert("Algo deu errado!");
+      toast.error("Algo deu errado!");
     }
 
     event.currentTarget.reset();
