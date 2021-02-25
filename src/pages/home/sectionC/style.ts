@@ -32,4 +32,15 @@ export const Container = styled.div`
     }
 
   }
+  @media screen and (max-width: 1024px){
+    padding: 40;
+    flex-direction: column;    
+    justify-content: center;
+    
+    .sectionRight{
+      p{
+        font-size: 150px; 
+      }
+    }
+  }
  `
