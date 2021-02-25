@@ -47,8 +47,7 @@ const RecoveryPass: React.FC = () => {
         </Link>
       </header>
 
-      <main className="recovery-wrapper">
-        <form onSubmit={createAccount}>
+      <div>        <form onSubmit={createAccount}>
           <h3 className="title-recovery">Esqueci minha senha</h3>
           <p id="subtitle-recovery">
             Confirme seu Usuário e escolha sua nova senha.
@@ -76,7 +75,7 @@ const RecoveryPass: React.FC = () => {
             <FiArrowRight size={20} />
           </button>
         </form>
-      </main>
+      </div>
     </RecoveryStyle>
   );
 };

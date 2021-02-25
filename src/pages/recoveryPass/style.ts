@@ -6,7 +6,7 @@ background-color: #8C52E5;
 background-repeat: no-repeat;
 background-position: bottom;
 min-height:100vh;
-    img{
+img{
         margin: 40px;
     }
 form{
@@ -61,5 +61,25 @@ form{
         }
         
     }
+
+    @media screen and (max-width: 960px) {
+    img{
+        margin:auto;
+        margin-bottom:25px;
+        display: flex;
+        }
+
+    div{
+    form{
+    width:300px;
+    padding:20px;
+    display:block;
+    max-width:100%;
+    margin: auto;
+        
+        
+        }
+    }
+}
 
 `
