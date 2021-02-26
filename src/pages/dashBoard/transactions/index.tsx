@@ -8,6 +8,7 @@ import {
   ReloadAccountRemove,
 } from "../../../store/modules/user/action";
 import { toast } from "react-toastify";
+import CurrencyInput from "react-currency-masked-input";
 
 const Transactions: React.FC<IProps> = ({ loginToken }: IProps) => {
   const dispatch = useDispatch();
@@ -126,13 +127,7 @@ const Transactions: React.FC<IProps> = ({ loginToken }: IProps) => {
               placeholder="Usuário destino"
             />
             <input type="text" name="descricao" placeholder="Descrição" />
-            <input
-              type="number"
-              name="valor"
-              min="0"
-              step=".01"
-              placeholder="Valor"
-            />
+            <CurrencyInput placeholder="Valor" name="valor" required />
             <button type="submit">Confirmar transação entre usuários</button>
           </form>
         </div>
@@ -141,13 +136,7 @@ const Transactions: React.FC<IProps> = ({ loginToken }: IProps) => {
             <h4>Para sua conta credito</h4>
             <input type="date" name="data" />
             <input type="text" name="descricao" placeholder="Descrição" />
-            <input
-              type="number"
-              name="valor"
-              min="0"
-              step=".01"
-              placeholder="Valor"
-            />
+            <CurrencyInput placeholder="Valor" name="valor" required />
             <button type="submit">Confirmar transação conta credito</button>
           </form>
         </div>

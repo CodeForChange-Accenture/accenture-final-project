@@ -5,6 +5,7 @@ import api from "../../../services/api";
 import { ReloadAccountAdd } from "../../../store/modules/user/action";
 import { IBank, IProps } from "../../../store/modules/user/types";
 import { DashBoardDeposit } from "./style";
+import CurrencyInput from "react-currency-masked-input";
 
 const Deposit: React.FC<IProps> = ({ loginToken }: IProps) => {
   const state = useSelector((state: IBank) => state);
@@ -69,13 +70,7 @@ const Deposit: React.FC<IProps> = ({ loginToken }: IProps) => {
         <form onSubmit={handlePlanoConta}>
           <input type="date" name="data" defaultValue="" />
           <input type="text" placeholder="Descrição" name="descricao" />
-          <input
-            type="number"
-            placeholder="Valor"
-            min="0"
-            name="valor"
-            step=".01"
-          />
+          <CurrencyInput placeholder="Valor" name="valor" required />
           <div>
             <button type="submit">Confirmar depósito</button>
           </div>
