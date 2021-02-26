@@ -1,26 +1,14 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    background-color: #8C52E5;
-    height: 100%;
-    min-height: 100vh;
-`
-
-export const Header = styled.div`
-    img{
-        margin: 40px;
-    }
-    
-`
-
-export const FormLogin = styled.div`
 background-color: #8C52E5;
+background-repeat: no-repeat;
 background-position: bottom;
 min-height:100vh;
-    img{
+img{
         margin: 40px;
     }
-    form{
+form{
     background: #FBFBFB;
     border-radius: 8px;
     padding: 24px 40px 40px 40px;
@@ -29,19 +17,13 @@ min-height:100vh;
     
     h3{
         text-align: center;
-        margin: 25px 0px;
     }
 
     p{
         text-align: center;
         font-size: 14px;
         font-weight: 300;
-        margin: 15px 0px;
-        color: #8C52E5;
-    }
-    a{
-        text-decoration: none;
-        
+        margin: 25px 0px;
     }
 
     input{
@@ -78,12 +60,14 @@ min-height:100vh;
         }
         
     }
+
     @media screen and (max-width: 960px) {
     img{
         margin:auto;
         margin-bottom:25px;
         display: flex;
-    }
+        }
+
     div{
         form{
             width:300px;
@@ -92,7 +76,6 @@ min-height:100vh;
             max-width:100%;
             margin: auto;
         }
-        }
     }
-
+}
 `
