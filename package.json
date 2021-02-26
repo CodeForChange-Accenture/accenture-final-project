@@ -30,7 +30,14 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test--coverage": "react-scripts test --coverage --watchAll false",
     "eject": "react-scripts eject"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "**/*.{ts,tsx}",
+      "!**/node_modules/**"
+    ]
   },
   "eslintConfig": {
     "extends": [
