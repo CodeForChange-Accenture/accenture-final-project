@@ -97,7 +97,8 @@
 ### `npm start`
 
 <h1 id="estrutura">Estrutura</h1>
-![image](https://user-images.githubusercontent.com/21091313/109364376-6e2ad000-786d-11eb-8331-9b6c6278ce1b.png)
+
+![image](https://user-images.githubusercontent.com/21091313/109364456-9fa39b80-786d-11eb-8316-bfa6e2d1357a.png)
 
 <p>O projeto foi dividido em pastas onde cada uma possui sua particularidade e funcionalidade, são elas:</p>
 
