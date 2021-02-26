@@ -25,7 +25,7 @@ min-height:100vh;
     border-radius: 8px;
     padding: 24px 40px 40px 40px;
     margin: auto;
-    max-width: 40%;
+    max-width: 25%;
     
     h3{
         text-align: center;

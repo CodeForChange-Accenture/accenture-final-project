@@ -25,7 +25,7 @@ const RecoveryPass: React.FC = () => {
       usuario: user,
       senha: password,
     };
-    if (password !== confirmPass || (password || confirmPass == "")) {
+    if ( (password !== confirmPass) && (password || confirmPass == "") ) {
       toast.error("As senhas não são compativeis ou estão inválidas");
       return;
 

@@ -163,7 +163,7 @@ const DashBoard: React.FC = () => {
                   <label>Fatura atual</label>
                   <h2>
                     {visible
-                      ? `R$: ${state.banco.contaCredito.saldo}`
+                      ? `R$: ${formatMoney(state.banco.contaCredito.saldo)}`
                       : `*****`}
                   </h2>
                   <br />
