@@ -8,6 +8,7 @@ import {
   ReloadAccountRemove,
 } from "../../../store/modules/user/action";
 import { toast } from "react-toastify";
+import CurrencyInput from "react-currency-masked-input";
 
 const Transactions: React.FC<IProps> = ({ loginToken }: IProps) => {
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ const Transactions: React.FC<IProps> = ({ loginToken }: IProps) => {
       toast.error("Valor inválido!");
       return;
     }
-
+    const inputReset: any = document.getElementById("valorInpA");
     const postData = {
       conta: state.banco.contaBanco.id,
       contaDestino: data.contaDestino,
@@ -50,6 +51,7 @@ const Transactions: React.FC<IProps> = ({ loginToken }: IProps) => {
           if (response.status == 200) {
             toast.success("Transação realizada com sucesso!");
             dispatch(ReloadAccountRemove(valorParaNumero));
+            inputReset.value = "";
           } else {
             toast.error("Erro na transação");
           }
@@ -78,6 +80,7 @@ const Transactions: React.FC<IProps> = ({ loginToken }: IProps) => {
       toast.error("Valor inválido!");
       return;
     }
+    const inputReset: any = document.getElementById("valorInpC");
 
     const postData = {
       conta: state.banco.contaBanco.id,
@@ -98,7 +101,9 @@ const Transactions: React.FC<IProps> = ({ loginToken }: IProps) => {
         })
         .then((response) => {
           if (response.status == 200) {
+            toast.success("Transação realizada com sucesso!");
             dispatch(ReloadAccountCredit(valorParaNumero));
+            inputReset.value = "";
           } else {
             toast.error("Erro na transação");
           }
@@ -125,12 +130,11 @@ const Transactions: React.FC<IProps> = ({ loginToken }: IProps) => {
               placeholder="Usuário destino"
             />
             <input type="text" name="descricao" placeholder="Descrição" />
-            <input
+            <CurrencyInput
               type="number"
-              placeholder="Valor"
-              min="0"
               name="valor"
-              step=".01"
+              placeholder="Valor"
+              id="valorInpA"
             />
             <button type="submit">Confirmar transação entre usuários</button>
           </form>
@@ -140,12 +144,11 @@ const Transactions: React.FC<IProps> = ({ loginToken }: IProps) => {
             <h4>Para sua conta credito</h4>
             <input type="date" name="data" />
             <input type="text" name="descricao" placeholder="Descrição" />
-            <input
+            <CurrencyInput
               type="number"
-              placeholder="Valor"
-              min="0"
               name="valor"
-              step=".01"
+              placeholder="Valor"
+              id="valorInpC"
             />
             <button type="submit">Confirmar transação conta credito</button>
           </form>

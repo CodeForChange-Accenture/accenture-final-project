@@ -33,7 +33,10 @@ import jwt_decode from "jwt-decode";
 import { IUser } from "../../store/modules/user/types";
 
 const formatMoney = (value: number) => {
-  return new Intl.NumberFormat().format(value);
+  return Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  }).format(value);
 };
 
 const DashBoard: React.FC = () => {
@@ -147,12 +150,12 @@ const DashBoard: React.FC = () => {
                   <label>Saldo disponível</label>
                   <h2>
                     {visible
-                      ? `R$: ${formatMoney(state.banco.contaBanco.saldo)}`
+                      ? `${formatMoney(state.banco.contaBanco.saldo)}`
                       : `*****`}
                   </h2>
                   <br />
                   <label>Limite disponível:</label>
-                  <h2>{visible ? `R$: 2.120,21` : `*****`}</h2>
+                  <h2>{visible ? `R$ 2.120,21` : `*****`}</h2>
                 </div>
               </div>
               <div className="credit">
@@ -163,12 +166,12 @@ const DashBoard: React.FC = () => {
                   <label>Fatura atual</label>
                   <h2>
                     {visible
-                      ? `R$: ${formatMoney(state.banco.contaCredito.saldo)}`
+                      ? `${formatMoney(state.banco.contaCredito.saldo)}`
                       : `*****`}
                   </h2>
                   <br />
                   <label>Limite disponível:</label>
-                  <h2>{visible ? `R$: 9.120,88` : `*****`}</h2>
+                  <h2>{visible ? `R$ 9.120,88` : `*****`}</h2>
                 </div>
               </div>
             </div>
@@ -202,7 +205,7 @@ const DashBoard: React.FC = () => {
                   <div className="historic-list">
                     <h4>{lancamentos.descricao}</h4>
                     <label>GamaAcademy</label>
-                    <h2>R$ {formatMoney(lancamentos.valor)}</h2>
+                    <h2>{formatMoney(lancamentos.valor)}</h2>
                   </div>
                   <div className="historic-day">
                     <label>{lancamentos.data}</label>

@@ -5,6 +5,8 @@ import api from "../../../services/api";
 import { ReloadAccountAdd } from "../../../store/modules/user/action";
 import { IBank, IProps } from "../../../store/modules/user/types";
 import { DashBoardDeposit } from "./style";
+import CurrencyInput from "react-currency-masked-input";
+
 const Deposit: React.FC<IProps> = ({ loginToken }: IProps) => {
   const state = useSelector((state: IBank) => state);
   const [inputCurrency, setInputCurrency] = useState("");
@@ -35,6 +37,7 @@ const Deposit: React.FC<IProps> = ({ loginToken }: IProps) => {
       planoConta: tipoMovimento[0].id,
       valor: valorParaNumero,
     };
+    const inputReset: any = document.getElementById("valorInp");
 
     try {
       api
@@ -48,6 +51,7 @@ const Deposit: React.FC<IProps> = ({ loginToken }: IProps) => {
           if (response.status == 200) {
             toast.success("Depósito realizado com sucesso!");
             dispatch(ReloadAccountAdd(valorParaNumero));
+            inputReset.value = "";
           } else {
             toast.error("Erro no depósito");
           }
@@ -69,12 +73,11 @@ const Deposit: React.FC<IProps> = ({ loginToken }: IProps) => {
         <form onSubmit={handlePlanoConta}>
           <input type="date" name="data" defaultValue="" />
           <input type="text" placeholder="Descrição" name="descricao" />
-          <input
+          <CurrencyInput
             type="number"
-            placeholder="Valor"
-            min="0"
             name="valor"
-            step=".01"
+            placeholder="Valor"
+            id="valorInp"
           />
           <div>
             <button type="submit">Confirmar depósito</button>

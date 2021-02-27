@@ -17,6 +17,7 @@ form{
     
     h3{
         text-align: center;
+        margin-bottom: 40px;
     }
 
     p{
