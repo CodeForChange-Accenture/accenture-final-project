@@ -29,6 +29,9 @@
     <li>
         <a href="#features">Features</a>
     </li>
+    <li>
+        <a href="#demonstracao">Demonstração da aplicação</a>
+    </li>
 </ul>
 
 <h1 id="participantes">Participantes</h1>
@@ -89,11 +92,13 @@
 <p>Para instalar as dependências</p>
 
 ### `yarn`
+
 ### `npm install`
 
 <p>Para iniciar o projeto</p>
 
 ### `yarn start`
+
 ### `npm start`
 
 <h1 id="estrutura">Estrutura</h1>
@@ -147,7 +152,7 @@
 <p>A pasta <b>style</b> possui um arquivo <b>Index</b> para fácil estilização global da aplicação</p>
 <hr>
 
-### Features
+<h1 id="features">Features</h1>
 
 - [x] Cadastro de usuários;
 - [x] Controle de sessão (Login);
@@ -164,6 +169,10 @@
 - [x] Consumo de api;
 - [x] Uso de typescript;
 - [x] Fidelização de <a
-                                                href="https://www.figma.com/file/tdrTDIY2hal9Ky4fbTvBl2/DesafioGamaAccenture_1_2-desktop?node-id=1%3A2">layout</a>;
+                                                                href="https://www.figma.com/file/tdrTDIY2hal9Ky4fbTvBl2/DesafioGamaAccenture_1_2-desktop?node-id=1%3A2">layout</a>;
 - [x] Testes unitários;
 - [x] Máscara e validação de inputs;
+
+<h1 id="demonstracao">Demonstração da aplicação</h1>
+
+<a href="https://cranky-aryabhata-292cff.netlify.app/">Gama Bank</a>
