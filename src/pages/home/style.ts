@@ -2,6 +2,7 @@ import styled from "styled-components";
 import bgImage from "../../img/happy.png";
 
 export const HomePage = styled.div`
+    overflow-x:hidden;
     .home {
         background-color: #8C52E5;
         background-image: url(${bgImage});

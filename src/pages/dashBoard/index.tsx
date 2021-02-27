@@ -57,39 +57,33 @@ const DashBoard: React.FC = () => {
   const login = TokenDecodedValue();
 
   useEffect(() => {
-    async function loadBankInfo() {
-      await api
-        .get(`dashboard?fim=${fim}&inicio=${inicio}&login=${login}`, {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: localStorage.getItem("@tokenApp"),
-          },
-        })
-        .then((response) => {
-          dispatch(AddAccountInfos(response.data));
-        })
-        .catch((e) => {
-          localStorage.clear();
-          toast.error("Ops, sua sessão está inspirada.");
-          history.push("/login");
-        });
-    }
-
-    async function loadAccount() {
-      await api
-        .get(`/lancamentos/planos-conta?login=${login}`, {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: localStorage.getItem("@tokenApp"),
-          },
-        })
-        .then((response) => {
-          dispatch(LoadAccountPlans(response.data));
-        });
-    }
-    loadBankInfo();
-    loadAccount();
-  }, [inicio, fim]);
+    api
+      .get(`dashboard?fim=${fim}&inicio=${inicio}&login=${login}`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: localStorage.getItem("@tokenApp"),
+        },
+      })
+      .then((response) => {
+        dispatch(AddAccountInfos(response.data));
+      })
+      .catch((e) => {
+        localStorage.clear();
+        toast.error("Ops, sua sessão está inspirada.");
+        history.push("/login");
+      });
+    api
+      .get(`/lancamentos/planos-conta?login=${login}`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: localStorage.getItem("@tokenApp"),
+        },
+      })
+      .then((response) => {
+        dispatch(LoadAccountPlans(response.data));
+      });
+    console.log("teste");
+  }, [dispatch, history, login, inicio, fim]);
 
   return (
     <>

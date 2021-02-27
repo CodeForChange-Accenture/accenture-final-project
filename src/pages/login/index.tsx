@@ -17,14 +17,14 @@ const Login: React.FC = () => {
 
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
-  const [storage, setStorage] = useState<IToken>((): any => {
+  const [storage] = useState<IToken>((): any => {
     let storageToken = () => localStorage.getItem("@tokenApp");
     return storageToken();
   });
 
   useEffect(() => {
     !!storage ? history.push("/dashboard") : localStorage.clear();
-  }, [storage]);
+  }, [storage, history]);
 
   function loginSys(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
