@@ -55,7 +55,6 @@ const RecoveryPass: React.FC = () => {
       </header>
 
       <div>
-        {" "}
         <form onSubmit={createAccount}>
           <h3 className="title-recovery">Esqueci minha senha</h3>
           <p id="subtitle-recovery">
