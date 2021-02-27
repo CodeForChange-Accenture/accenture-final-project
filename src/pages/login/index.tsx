@@ -1,7 +1,7 @@
 import React, { useState, FormEvent, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 
-import { FiArrowRight, FiChevronsRight } from "react-icons/fi";
+import { FiArrowRight } from "react-icons/fi";
 
 import api from "../../services/api";
 
@@ -72,13 +72,13 @@ const Login: React.FC = () => {
         <Link to="/recoveryPass">
           <p>
             Esqueci minha senha
-            <FiChevronsRight />
+            <FiArrowRight />
           </p>
         </Link>
         <Link to="/">
           <p>
             Ainda não sou cliente
-            <FiChevronsRight />
+            <FiArrowRight />
           </p>
         </Link>
       </form>

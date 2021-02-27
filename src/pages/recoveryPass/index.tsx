@@ -12,6 +12,7 @@ const RecoveryPass: React.FC = () => {
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPass, setConfirmPass] = useState("");
+  const [recovered, setRecovered] = useState(false);
 
   function createAccount(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -36,7 +37,10 @@ const RecoveryPass: React.FC = () => {
             params: { senhaTemporaria: response.data },
           });
         })
-        .then(() => toast.success("A Nova senha foi definida"))
+        .then(() => {
+          toast.success("A Nova senha foi definida");
+          setRecovered(true);
+        })
         .catch((e) =>
           toast.error("As senhas não são compativeis ou estão inválidas")
         );
@@ -79,6 +83,14 @@ const RecoveryPass: React.FC = () => {
             Enviar
             <FiArrowRight size={20} />
           </button>
+          {recovered && (
+            <Link to="/login">
+              <p>
+                Acessar Gama Bank
+                <FiArrowRight />
+              </p>
+            </Link>
+          )}
         </form>
       </div>
     </RecoveryStyle>

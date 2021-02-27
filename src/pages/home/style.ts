@@ -1,4 +1,4 @@
-import styled, {css} from "styled-components";
+import styled from "styled-components";
 import bgImage from "../../img/happy.png";
 
 export const HomePage = styled.div`

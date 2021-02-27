@@ -9,7 +9,6 @@ import CurrencyInput from "react-currency-masked-input";
 
 const Deposit: React.FC<IProps> = ({ loginToken }: IProps) => {
   const state = useSelector((state: IBank) => state);
-  const [inputCurrency, setInputCurrency] = useState("");
   const dispatch = useDispatch();
 
   const handlePlanoConta = (event: FormEvent<HTMLFormElement>) => {
@@ -17,7 +16,7 @@ const Deposit: React.FC<IProps> = ({ loginToken }: IProps) => {
 
     //Filtra array para saber qual será o ID da transação desejada
     const tipoMovimento = state.plan.filter(
-      (state) => state.tipoMovimento == "R"
+      (state) => state.tipoMovimento === "R"
     );
 
     const data = Object.fromEntries(new FormData(event.currentTarget));
@@ -48,7 +47,7 @@ const Deposit: React.FC<IProps> = ({ loginToken }: IProps) => {
           },
         })
         .then((response) => {
-          if (response.status == 200) {
+          if (response.status === 200) {
             toast.success("Depósito realizado com sucesso!");
             dispatch(ReloadAccountAdd(valorParaNumero));
             inputReset.value = "";

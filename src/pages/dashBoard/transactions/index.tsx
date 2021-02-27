@@ -18,7 +18,7 @@ const Transactions: React.FC<IProps> = ({ loginToken }: IProps) => {
 
     //Filtra array para saber qual será o ID da transação desejada
     const tipoMovimento = state.plan.filter(
-      (state) => state.tipoMovimento == "TU"
+      (state) => state.tipoMovimento === "TU"
     );
 
     const data = Object.fromEntries(new FormData(event.currentTarget));
@@ -48,7 +48,7 @@ const Transactions: React.FC<IProps> = ({ loginToken }: IProps) => {
           },
         })
         .then((response) => {
-          if (response.status == 200) {
+          if (response.status === 200) {
             toast.success("Transação realizada com sucesso!");
             dispatch(ReloadAccountRemove(valorParaNumero));
             inputReset.value = "";
@@ -70,7 +70,7 @@ const Transactions: React.FC<IProps> = ({ loginToken }: IProps) => {
 
     //Filtra array para saber qual será o ID da transação desejada
     const tipoMovimento = state.plan.filter(
-      (state) => state.tipoMovimento == "TC"
+      (state) => state.tipoMovimento === "TC"
     );
 
     const data = Object.fromEntries(new FormData(event.currentTarget));
@@ -100,7 +100,7 @@ const Transactions: React.FC<IProps> = ({ loginToken }: IProps) => {
           },
         })
         .then((response) => {
-          if (response.status == 200) {
+          if (response.status === 200) {
             toast.success("Transação realizada com sucesso!");
             dispatch(ReloadAccountCredit(valorParaNumero));
             inputReset.value = "";
