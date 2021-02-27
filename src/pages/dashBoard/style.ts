@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const DashBoardPage = styled.div`
-background:#8C52E5;
+background-color:#8C52E5;
+
     .main-board{
         background:#8C52E5;
         margin: 0;

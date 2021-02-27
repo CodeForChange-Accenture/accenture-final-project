@@ -1,36 +1,29 @@
+import jwt_decode from "jwt-decode";
 import React, { useEffect, useState } from "react";
-import logoHandGama from "../../img/logoHandGama.png";
-import { toast } from "react-toastify";
-
-import { useDispatch, useSelector } from "react-redux";
-
-import { IBank } from "../../store/modules/user/types";
 import {
-  AddAccountInfos,
-  LoadAccountPlans,
-} from "../../store/modules/user/action";
-
-import { DashBoardPage, SideBar, Main } from "./style";
-import {
-  FiDollarSign,
+  FiBook,
+  FiCornerDownRight,
   FiCreditCard,
+  FiDollarSign,
   FiEye,
   FiEyeOff,
   FiLogOut,
   FiMaximize2,
-  FiBook,
-  FiCornerDownRight,
 } from "react-icons/fi";
-import api from "../../services/api";
-
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-
+import { toast } from "react-toastify";
+import logoHandGama from "../../img/logoHandGama.png";
+import api from "../../services/api";
+import {
+  AddAccountInfos,
+  LoadAccountPlans,
+} from "../../store/modules/user/action";
+import { IBank, IUser } from "../../store/modules/user/types";
 import Deposit from "./deposit";
-import Transactions from "./transactions";
 import Plans from "./plans";
-
-import jwt_decode from "jwt-decode";
-import { IUser } from "../../store/modules/user/types";
+import { DashBoardPage, Main, SideBar } from "./style";
+import Transactions from "./transactions";
 
 const formatMoney = (value: number) => {
   return Intl.NumberFormat("pt-BR", {
