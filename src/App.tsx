@@ -2,9 +2,8 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import GlobalStyle from "./style/global";
 import Routes from "./routes";
-import { toast, ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
-
 
 import { Provider } from "react-redux";
 import store from "./store";
