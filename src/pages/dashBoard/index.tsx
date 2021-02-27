@@ -1,39 +1,35 @@
+import jwt_decode from "jwt-decode";
 import React, { useEffect, useState } from "react";
-import logoHandGama from "../../img/logoHandGama.png";
-import { toast } from "react-toastify";
-
-import { useDispatch, useSelector } from "react-redux";
-
-import { IBank } from "../../store/modules/user/types";
 import {
-  AddAccountInfos,
-  LoadAccountPlans,
-} from "../../store/modules/user/action";
-
-import { DashBoardPage, SideBar, Main } from "./style";
-import {
-  FiDollarSign,
+  FiBook,
+  FiCornerDownRight,
   FiCreditCard,
+  FiDollarSign,
   FiEye,
   FiEyeOff,
   FiLogOut,
   FiMaximize2,
-  FiBook,
-  FiCornerDownRight,
 } from "react-icons/fi";
-import api from "../../services/api";
-
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-
+import { toast } from "react-toastify";
+import logoHandGama from "../../img/logoHandGama.png";
+import api from "../../services/api";
+import {
+  AddAccountInfos,
+  LoadAccountPlans,
+} from "../../store/modules/user/action";
+import { IBank, IUser } from "../../store/modules/user/types";
 import Deposit from "./deposit";
-import Transactions from "./transactions";
 import Plans from "./plans";
-
-import jwt_decode from "jwt-decode";
-import { IUser } from "../../store/modules/user/types";
+import { DashBoardPage, Main, SideBar } from "./style";
+import Transactions from "./transactions";
 
 const formatMoney = (value: number) => {
-  return new Intl.NumberFormat().format(value);
+  return Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  }).format(value);
 };
 
 const DashBoard: React.FC = () => {
@@ -147,12 +143,12 @@ const DashBoard: React.FC = () => {
                   <label>Saldo disponível</label>
                   <h2>
                     {visible
-                      ? `R$: ${formatMoney(state.banco.contaBanco.saldo)}`
+                      ? `${formatMoney(state.banco.contaBanco.saldo)}`
                       : `*****`}
                   </h2>
                   <br />
                   <label>Limite disponível:</label>
-                  <h2>{visible ? `R$: 2.120,21` : `*****`}</h2>
+                  <h2>{visible ? `R$ 2.120,21` : `*****`}</h2>
                 </div>
               </div>
               <div className="credit">
@@ -163,12 +159,12 @@ const DashBoard: React.FC = () => {
                   <label>Fatura atual</label>
                   <h2>
                     {visible
-                      ? `R$: ${formatMoney(state.banco.contaCredito.saldo)}`
+                      ? `${formatMoney(state.banco.contaCredito.saldo)}`
                       : `*****`}
                   </h2>
                   <br />
                   <label>Limite disponível:</label>
-                  <h2>{visible ? `R$: 9.120,88` : `*****`}</h2>
+                  <h2>{visible ? `R$ 9.120,88` : `*****`}</h2>
                 </div>
               </div>
             </div>

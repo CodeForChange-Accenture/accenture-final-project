@@ -48,6 +48,9 @@ const Deposit: React.FC<IProps> = ({ loginToken }: IProps) => {
           if (response.status == 200) {
             toast.success("Deposito realizado com sucesso!");
             dispatch(ReloadAccountAdd(valorParaNumero));
+
+            // const inputReset: any = document.getElementById("testee");
+            // inputReset.value = "";
           } else {
             toast.error("Erro no deposito");
           }
@@ -70,6 +73,7 @@ const Deposit: React.FC<IProps> = ({ loginToken }: IProps) => {
           <input type="date" name="data" defaultValue="" />
           <input type="text" placeholder="Descrição" name="descricao" />
           <input
+            id="testee"
             type="number"
             placeholder="Valor"
             min="0"
