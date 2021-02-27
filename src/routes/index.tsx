@@ -4,9 +4,9 @@ import { Switch, Route } from "react-router-dom";
 
 import PrivateRoute from "./privateRoute";
 
-import Dashboard from "../pages/dashboard";
+import Dashboard from "../pages/dashBoard";
 import RecoveryPass from "../pages/recoveryPass/index";
-import Error from "../pages/error/index";
+import Error from "../pages/error";
 import Home from "../pages/home";
 import Login from "../pages/login";
 
