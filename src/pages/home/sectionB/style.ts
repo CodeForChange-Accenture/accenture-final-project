@@ -5,11 +5,10 @@ export const Container = styled.div`
   min-height: 100vh;
   padding: 56px;
   display: flex;
-  flex-direction: row;
 
   section {
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
     flex-basis: 50%;
     width: 100%;
     padding-top: 80px;
@@ -45,21 +44,24 @@ export const Container = styled.div`
 
   .sectionRight{
     background: #F8F8F8;
-    padding-left: 7%;
-    display: flex;
+    /* padding-left: 7%; */
+    /* display: flex; */
 
     h2{
       color: #1D1D1D;
       margin-bottom: 25px;
+      text-align: center;
       
     }
 
     img{
       width: 340px;
-      margin-bottom: 28px;
+      margin: 0px 200px;
     }
     p{
       color: #1D1D1D;
+      margin-left: 100px;
+
     }
 
   }
