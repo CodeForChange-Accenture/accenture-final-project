@@ -1,14 +1,13 @@
-import React, { FormEvent } from "react";
+import React, { FormEvent, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import api from "../../../services/api";
 import { ReloadAccountAdd } from "../../../store/modules/user/action";
 import { IBank, IProps } from "../../../store/modules/user/types";
 import { DashBoardDeposit } from "./style";
-import CurrencyInput from "react-currency-masked-input";
-
 const Deposit: React.FC<IProps> = ({ loginToken }: IProps) => {
   const state = useSelector((state: IBank) => state);
+  const [inputCurrency, setInputCurrency] = useState("");
   const dispatch = useDispatch();
 
   const handlePlanoConta = (event: FormEvent<HTMLFormElement>) => {
@@ -47,17 +46,17 @@ const Deposit: React.FC<IProps> = ({ loginToken }: IProps) => {
         })
         .then((response) => {
           if (response.status == 200) {
-            toast.success("Deposito realizado com sucesso!");
+            toast.success("Depósito realizado com sucesso!");
             dispatch(ReloadAccountAdd(valorParaNumero));
           } else {
-            toast.error("Erro no deposito");
+            toast.error("Erro no depósito");
           }
         })
         .catch(() => {
-          toast.error("Erro no deposito!");
+          toast.error("Erro no depósito!");
         });
     } catch (e) {
-      toast.error("Erro no deposito!");
+      toast.error("Erro no depósito!");
     }
 
     event.currentTarget.reset();
@@ -70,7 +69,13 @@ const Deposit: React.FC<IProps> = ({ loginToken }: IProps) => {
         <form onSubmit={handlePlanoConta}>
           <input type="date" name="data" defaultValue="" />
           <input type="text" placeholder="Descrição" name="descricao" />
-          <CurrencyInput placeholder="Valor" name="valor" required />
+          <input
+            type="number"
+            placeholder="Valor"
+            min="0"
+            name="valor"
+            step=".01"
+          />
           <div>
             <button type="submit">Confirmar depósito</button>
           </div>
