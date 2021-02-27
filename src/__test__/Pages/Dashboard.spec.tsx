@@ -6,7 +6,7 @@ import { render } from "@testing-library/react";
 import "react-toastify";
 import "styled-components";
 import "jest-styled-components";
-
+import { isAuthenticated } from "../../services/auth";
 //import { AddAccountInfos } from "../../store/modules/user/action";
 //import { IBank } from "../../store/modules/user/types";
 
@@ -28,6 +28,7 @@ jest.mock("react-redux", () => {
 jest.mock("styled-components", () => {
   return {
     styled: jest.fn(),
+    div: ({ children }: { children: React.ReactNode }) => children,
   };
 });
 
@@ -35,6 +36,14 @@ jest.mock("react-toastify", () => {
   return {
     toast: jest.fn(),
     ToastContainer: ({ children }: { children: React.ReactNode }) => children,
+  };
+});
+
+const mockIsAuth = jest.fn();
+jest.mock("", () => {
+  return {
+    auth: jest.fn(),
+    isAuthenticated: () => mockIsAuth,
   };
 });
 
